@@ -23,10 +23,10 @@ public:
     void deleteEmployeeFromFile(std::string name, Employee* employee);
     void updateEmployeeFile(std::string name, Employee* employee, int start, int end);
     void readEmployeeData(std::string name, std::vector<Employee> employees);
-    void addProductToFile();
-    void deleteProductFromFile();
-    void updateProductFile();
-    void readProductData();
+    void addProductToFile(std::string name, Product product);
+    void deleteProductFromFile(std::string name, Product product);
+    void updateProductFile(std::string name, Product product);
+    void readProductData(std::string name, std::vector<Product> products);
     void addOrderToFile();
     int isLoyalCustomer();
     void readOrderData();

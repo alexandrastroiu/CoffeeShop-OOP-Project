@@ -146,3 +146,28 @@ void FileHandling::updateEmployeeFile(std::string name, Employee* employee, int 
 void FileHandling::readEmployeeData(std::string name, std::vector<Employee> employees) {
 
 }
+
+void FileHandling::addProductToFile(std::string name, Product product) {
+
+    this->setFileName(name);
+
+    try {        // Exceptions
+
+        fstream out;
+
+        out.open(fileName, ios::app); /// append
+
+        if (!out.is_open())
+        {
+            throw "Error: Unable to open file.";
+        }
+
+        out << product.getProductName() << "," << product.getProductType() << "," << product.getQuantity() << "," << product.getPrice() << "," << product.getCost() << endl;
+
+        out.close();
+    }
+    catch(const char* message) {
+        cout << message << endl;
+        return;
+    }
+}
