@@ -303,4 +303,39 @@ int FileHandling::isLoyalCustomer(std::string name, std::string client) {
     }
 }
 
+void FileHandling::readOrderData() {
 
+}
+
+void FileHandling::addEventToFile(std::string name, Event* event) {
+
+    this->setFileName(name);
+
+    try {     // Exceptions
+        fstream out;
+
+        out.open(fileName, ios::app); /// append
+
+        if (!out.is_open())
+        {
+            throw "Error: Unable to open file.";
+        }
+
+        out <<
+    }
+    catch() {
+
+    }
+}
+
+void FileHandling::readEventData() {
+
+}
+
+void FileHandling::addReportToFile(std::string name) {
+
+}
+
+void FileHandling::readReportData() {
+
+}

@@ -30,9 +30,9 @@ public:
     void addOrderToFile(std::string name, Order order);
     int isLoyalCustomer(std::string name, std::string client);
     void readOrderData();
-    void addEventToFile();
+    void addEventToFile(std::string name, Event* event);
     void readEventData();
-    void addReportToFile();
+    void addReportToFile(std::string name);
     void readReportData();
 
 
