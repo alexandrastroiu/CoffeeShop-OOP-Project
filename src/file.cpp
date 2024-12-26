@@ -19,8 +19,8 @@ std::string FileHandling::getFileName() {
 void FileHandling::addEmployeeToFile(std::string name, Employee* employee) {
 
     this->setFileName(name);
-
-    try{
+    
+    try{        // Exceptions
         fstream out;
 
         out.open(fileName, ios::app); /// append
@@ -44,7 +44,7 @@ void FileHandling::deleteEmployeeFromFile(std::string name, Employee* employee) 
 
        this->setFileName(name);
 
-       try {
+       try {         // Exceptions
         fstream in, out;
 
         in.open(fileName, ios::in);
@@ -93,7 +93,7 @@ void FileHandling::updateEmployeeFile(std::string name, Employee* employee, int 
 
      this->setFileName(name);
 
-     try {
+     try {                // Exceptions
         fstream in, out;
 
         in.open(fileName, ios::in);
