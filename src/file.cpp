@@ -171,3 +171,53 @@ void FileHandling::addProductToFile(std::string name, Product product) {
         return;
     }
 }
+
+void FileHandling::deleteProductFromFile(std::string name, Product product) {
+
+    this->setFileName(name);
+
+    try {      // Exceptions
+        fstream in, out;
+
+        in.open(fileName, ios::in);
+        out.open("output.csv", ios::out);
+
+        if (!out.is_open() || !in.is_open())
+        {
+            throw "Error: Unable to open file.";
+        }
+
+        string line, word;
+        vector<string> row;
+
+        getline(in, line);
+        out << line << endl;
+
+        while (getline(in, line))
+        {
+            row.clear();
+            stringstream s(line);
+
+            while (getline(s, word, ','))
+            {
+                row.push_back(word);
+            }
+
+            if (!(row[0] == product.getProductName() && row[1] == product.getProductType() && stoi(row[2]) == product.getQuantity() && stof(row[3]) ==  product.getPrice() && stof(row[4]) == product.getCost()))
+            {
+                out << line << endl;
+            }
+        }
+
+        in.close();
+        out.close();
+
+        remove(fileName.c_str());
+        rename("output.csv", fileName.c_str());
+    }
+    catch(const char* message) {
+        cout << message << endl;
+        return;
+    }
+}
+
