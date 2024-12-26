@@ -274,8 +274,45 @@ void FileHandling::updateProductFile() {
 
 }
 
-void FileHandling::readProductData() {
+void FileHandling::readProductData(std::string name, std::vector<Product>& products) {
 
+    this->setFileName(name);
+
+    try {
+        fstream in;
+
+        in.open(fileName, ios::in);
+
+        if (!in.is_open()) {
+            throw "Error: Unable to open file.";
+        }
+
+        string line, word;
+        vector<string> row;
+
+        getline(in, line);
+
+        while (getline(in, line))
+        {
+            row.clear();
+            stringstream s(line);
+
+            while (getline(s, word, ','))
+            {
+                row.push_back(word);
+            }
+ 
+           Product product(row[0], row[1], stoi(row[2]), stof(row[3]), stof(row[4]));
+           products.push_back(product);
+        }
+
+        in.close();
+        
+    }
+    catch(const char* message) {
+        cout << message << endl;
+        return;
+    }
 }
 
 void FileHandling::addOrderToFile(std::string name, Order order) {
