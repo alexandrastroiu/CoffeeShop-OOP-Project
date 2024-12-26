@@ -4,6 +4,10 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include "../headers/product.hpp"
+#include "../headers/order.hpp"
+#include "../headers/employee.hpp"
+#include "../headers/event.hpp"
 
 class FileHandling {
 private: // Encapsulation
@@ -15,20 +19,21 @@ public:
 
     void setFileName(std::string fileName); // Setter
     std::string getFileName();              // Getter
-    void addEmployeeToFile();
-    void deleteEmployeeFromFile();
-    void updateEmployeeFile();
-    void readEmployeeFile();
+    void addEmployeeToFile(std::string name, Employee* employee);
+    void deleteEmployeeFromFile(std::string name, Employee* employee);
+    void updateEmployeeFile(std::string name, Employee* employee);
+    void readEmployeeData(std::string name);
     void addProductToFile();
     void deleteProductFromFile();
     void updateProductFile();
-    void readProductFile();
+    void readProductData();
     void addOrderToFile();
-    void readOrderFile();
+    int isLoyalCustomer();
+    void readOrderData();
     void addEventToFile();
-    void readEventFile();
+    void readEventData();
     void addReportToFile();
-    void readReportFile();
+    void readReportData();
 
 
     ~FileHandling() = default; // Default Destructor
