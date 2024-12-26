@@ -35,6 +35,7 @@ class Coffeeshop {
     void addProduct();
     void deleteProduct();
     float calculateProductsCost();
+    void placeOrder();
     void organizeEvent();
     float calculateDailyRevenue();
     float calculateDailyCost();
