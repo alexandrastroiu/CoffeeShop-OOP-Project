@@ -15,6 +15,26 @@ Employee::Employee(string name, string role, int start, int end, float payment) 
 // Employee Destructor
 Employee::~Employee() {}
 
+std::string Employee::getEmployeeName() {
+    return name;
+}
+
+std::string Employee::getEmployeeRole() {
+    return role;
+}
+
+int Employee::getShiftStart() {
+    return shiftStart;
+}
+
+int Employee::getShiftEnd() {
+    return shiftEnd;
+}
+
+float Employee::getPayment() {
+    return payment;
+}
+
 // Manager Constructor
 Manager::Manager(string name, string role, int start, int end, float payment): Employee(name, role, start, end, payment) {}
 
