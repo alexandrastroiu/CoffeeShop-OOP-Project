@@ -71,7 +71,7 @@ void FileHandling::deleteEmployeeFromFile(std::string name, Employee* employee) 
                 row.push_back(word);
             }
 
-            if (!(row[0] == employee->getEmployeeName() && row[1] == employee->getEmployeeRole() && stoi(row[2]) == employee->getShiftStart() && stoi(row[3]) ==  employee->getShiftEnd() && stof(row[3]) == employee->getPayment()))
+            if (!(row[0] == employee->getEmployeeName() && row[1] == employee->getEmployeeRole() && stoi(row[2]) == employee->getShiftStart() && stoi(row[3]) ==  employee->getShiftEnd() && stof(row[4]) == employee->getPayment()))
             {
                 out << line << endl;
             }
@@ -120,12 +120,14 @@ void FileHandling::updateEmployeeFile(std::string name, Employee* employee, int 
                 row.push_back(word);
             }
 
-            if (!(row[0] == employee->getEmployeeName() && row[1] == employee->getEmployeeRole() && stoi(row[2]) == employee->getShiftStart() && stoi(row[3]) ==  employee->getShiftEnd() && stof(row[3]) == employee->getPayment()))
+            if (!(row[0] == employee->getEmployeeName() && row[1] == employee->getEmployeeRole() && stoi(row[2]) == employee->getShiftStart() && stoi(row[3]) ==  employee->getShiftEnd() && stof(row[4]) == employee->getPayment()))
             {
                 out << line << endl;
             }
-            else {  //TODO 
-
+            else {
+                row[2] = std::to_string(start);
+                row[3] = std::to_string(end);
+                out << row[0] << "," << row[1] << "," << row[2] << "," << row[3] << "," << row[4] << endl;
             }
         }
 
