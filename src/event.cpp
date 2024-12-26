@@ -10,6 +10,18 @@ Event::Event(std::string eventName, std::vector<Product> products, float cost) {
    totalEventCost = 0.0;
 }
 
+std::string Event::getEventName() {
+    return eventName;
+}
+
+std::vector<Product> Event::getEventProducts() {
+    return products;
+}
+
+float Event::getTotalEventCost() {
+    return totalEventCost;
+}
+
 // CofeeTastingEvent Constructor
 CoffeeTastingEvent::CoffeeTastingEvent(std::string eventName, std::vector<Product> products, float cost, float marketingCost): Event(eventName, products, cost) {
     this->marketingCost = marketingCost;
