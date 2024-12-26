@@ -5,6 +5,7 @@
 #include "../headers/order.hpp"
 #include "../headers/employee.hpp"
 #include "../headers/event.hpp"
+#include "../headers/file.hpp"
 #include <string>
 #include <vector>
 
@@ -20,7 +21,7 @@ class Coffeeshop {
     
 
     public:
-    Coffeeshop();  // Constructor
+    Coffeeshop(std::string city, int number);  // Constructor
     
     //TODO: ADD REPORT AND FILES , CHECK METHODS  AND ATTRIBUTES AGAIN
     void setCity(std::string name);  // Setter
@@ -30,8 +31,8 @@ class Coffeeshop {
     void showCoffeeshopInfo();
     void addEmployee();
     void deleteEmployee();
-    float calculateEmployeesCost();
     void updateEmployeeHours();
+    float calculateEmployeesCost();
     void addProduct();
     void deleteProduct();
     float calculateProductsCost();
