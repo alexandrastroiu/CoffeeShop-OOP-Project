@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include "../headers/file.hpp"
 
 using namespace std;
@@ -15,7 +16,7 @@ std::string FileHandling::getFileName() {
     return fileName;
 }
 
-void FileHandling::addEmployeeToFile(std::string name, Employee* employee){
+void FileHandling::addEmployeeToFile(std::string name, Employee* employee) {
 
     this->setFileName(name);
 
@@ -37,4 +38,109 @@ void FileHandling::addEmployeeToFile(std::string name, Employee* employee){
         cout << message << endl;
         return;
     }
+}
+
+void FileHandling::deleteEmployeeFromFile(std::string name, Employee* employee) {
+
+       this->setFileName(name);
+
+       try {
+        fstream in, out;
+
+        in.open(fileName, ios::in);
+        out.open("output.csv", ios::out);
+
+        if (!out.is_open() || !in.is_open())
+        {
+            throw "Error: Unable to open file.";
+        }
+
+        string line, word;
+        vector<string> row;
+
+        getline(in, line);
+        out << line << endl;
+
+        while (getline(in, line))
+        {
+            row.clear();
+            stringstream s(line);
+
+            while (getline(s, word, ','))
+            {
+                row.push_back(word);
+            }
+
+            if (!(row[0] == employee->getEmployeeName() && row[1] == employee->getEmployeeRole() && stoi(row[2]) == employee->getShiftStart() && stoi(row[3]) ==  employee->getShiftEnd() && stof(row[3]) == employee->getPayment()))
+            {
+                out << line << endl;
+            }
+        }
+
+        in.close();
+        out.close();
+
+        remove(fileName.c_str());
+        rename("output.csv", fileName.c_str());
+       }
+       catch(const char* message) {
+        cout << message << endl;
+        return;
+       }
+}
+
+void FileHandling::updateEmployeeFile(std::string name, Employee* employee, int start, int end) {
+
+     this->setFileName(name);
+
+     try {
+        fstream in, out;
+
+        in.open(fileName, ios::in);
+        out.open("output.csv", ios::out);
+
+        if (!out.is_open() || !in.is_open())
+        {
+            throw "Error: Unable to open file.";
+        }
+
+        string line, word;
+        vector<string> row;
+
+        getline(in, line);
+        out << line << endl;
+
+        while (getline(in, line))
+        {
+            row.clear();
+            stringstream s(line);
+
+            while (getline(s, word, ','))
+            {
+                row.push_back(word);
+            }
+
+            if (!(row[0] == employee->getEmployeeName() && row[1] == employee->getEmployeeRole() && stoi(row[2]) == employee->getShiftStart() && stoi(row[3]) ==  employee->getShiftEnd() && stof(row[3]) == employee->getPayment()))
+            {
+                out << line << endl;
+            }
+            else {  //TODO 
+
+            }
+        }
+
+        in.close();
+        out.close();
+
+        remove(fileName.c_str());
+        rename("output.csv", fileName.c_str());
+     }
+     catch(const char* message) {
+        cout << message << endl;
+        return;
+     }
+}
+
+void FileHandling::readEmployeeData(std::string name, std::vector<Employee> employees) {
+
 }
