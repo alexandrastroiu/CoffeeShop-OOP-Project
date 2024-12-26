@@ -28,7 +28,7 @@ public:
     void updateProductFile(std::string name, Product product);
     void readProductData(std::string name, std::vector<Product> products);
     void addOrderToFile(std::string name, Order order);
-    int isLoyalCustomer();
+    int isLoyalCustomer(std::string name, std::string client);
     void readOrderData();
     void addEventToFile();
     void readEventData();

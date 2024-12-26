@@ -258,4 +258,49 @@ void FileHandling::addOrderToFile(std::string name, Order order) {
     }
 }
 
+int FileHandling::isLoyalCustomer(std::string name, std::string client) {
+    int previousOrders = 0;
+    this->setFileName(name);
+
+    try {
+        fstream in(fileName, ios::in);
+
+        if (!in.is_open())
+        {
+            throw "Error: Unable to open file.";
+        }
+
+        string line, word;
+        vector<string> row;
+
+        getline(in, line);
+        
+        while (getline(in, line))
+        {
+            row.clear();
+            stringstream s(line);
+
+            while (getline(s, word, ','))
+            {
+                row.push_back(word);
+            }
+
+            if (row[0] == client)
+            {
+                previousOrders++;
+            }
+        }
+
+        in.close();
+
+        if(previousOrders > 2) {
+            return 1;
+        }
+    }
+    catch(const char* message) {
+        cout << message << endl;
+        return 0;
+    }
+}
+
 
