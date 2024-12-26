@@ -4,18 +4,19 @@
 using namespace std;
 
 // Event Constructor
-Event::Event(std::vector<Product> products, float cost) {
+Event::Event(std::string eventName, std::vector<Product> products, float cost) {
+   this->eventName = eventName;
    this->products = products;
    totalEventCost = 0.0;
 }
 
 // CofeeTastingEvent Constructor
-CoffeeTastingEvent::CoffeeTastingEvent(std::vector<Product> products, float cost, float marketingCost): Event(products, cost) {
+CoffeeTastingEvent::CoffeeTastingEvent(std::string eventName, std::vector<Product> products, float cost, float marketingCost): Event(eventName, products, cost) {
     this->marketingCost = marketingCost;
 }
 
 // LiveMusicEvent Constructor
-LiveMusicEvent::LiveMusicEvent(std::vector<Product> products, float cost, float bandCost, float marketingCost): Event(products, cost) {
+LiveMusicEvent::LiveMusicEvent(std::string eventName, std::vector<Product> products, float cost, float bandCost, float marketingCost): Event(eventName, products, cost) {
     this->marketingCost = marketingCost;
     this->bandCost = bandCost;
 }
@@ -67,19 +68,19 @@ float LiveMusicEvent::calculateEventCost() {
     return currentCost;
 }
 
-Event* CoffeeTastingEventFactory::createCoffeeTastingEvent(std::vector<Product> products, float cost, float marketingCost) {
-   return new CoffeeTastingEvent(products, cost, marketingCost);
+Event* CoffeeTastingEventFactory::createCoffeeTastingEvent(std::string eventName, std::vector<Product> products, float cost, float marketingCost) {
+   return new CoffeeTastingEvent(eventName, products, cost, marketingCost);
 }
 
-Event* CoffeeTastingEventFactory::createLiveMusicEvent(std::vector<Product> products, float cost, float bandCost, float marketingCost) {
+Event* CoffeeTastingEventFactory::createLiveMusicEvent(std::string eventName, std::vector<Product> products, float cost, float bandCost, float marketingCost) {
     return nullptr;
 }
 
-Event* LiveMusicEventFactory::createLiveMusicEvent(std::vector<Product> products, float cost, float bandCost, float marketingCost) {
-   return new LiveMusicEvent(products, cost, bandCost, marketingCost);
+Event* LiveMusicEventFactory::createLiveMusicEvent(std::string eventName, std::vector<Product> products, float cost, float bandCost, float marketingCost) {
+   return new LiveMusicEvent(eventName, products, cost, bandCost, marketingCost);
 }
 
-Event* LiveMusicEventFactory::createCoffeeTastingEvent(std::vector<Product> products, float cost, float marketingCost) {
+Event* LiveMusicEventFactory::createCoffeeTastingEvent(std::string eventName, std::vector<Product> products, float cost, float marketingCost) {
     return nullptr;
 }
 
