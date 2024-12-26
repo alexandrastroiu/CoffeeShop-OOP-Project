@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
 
 class FileHandling {
 private: // Encapsulation
@@ -14,20 +15,20 @@ public:
 
     void setFileName(std::string fileName); // Setter
     std::string getFileName();              // Getter
-    addEmployeeToFile();
-    deleteEmployeeFromFile();
-    updateEmployeeFile();
-    readEmployeeFile();
-    addProductToFile();
-    deleteProductFromFile();
-    updateProductFile();
-    readProductFile();
-    addOrderToFile();
-    readOrderFile();
-    addEventToFile();
-    readEventFile();
-    addReportToFile();
-    readReportFile();
+    void addEmployeeToFile();
+    void deleteEmployeeFromFile();
+    void updateEmployeeFile();
+    void readEmployeeFile();
+    void addProductToFile();
+    void deleteProductFromFile();
+    void updateProductFile();
+    void readProductFile();
+    void addOrderToFile();
+    void readOrderFile();
+    void addEventToFile();
+    void readEventFile();
+    void addReportToFile();
+    void readReportFile();
 
 
     ~FileHandling() = default; // Default Destructor
