@@ -16,6 +16,9 @@ class Event {
 
     virtual float calculateEventCost() = 0;    // Abstraction
     virtual void showEventInfo() = 0;
+    std::string getEventName();                  // Getters
+    std::vector<Product> getEventProducts();
+    float getTotalEventCost();
 
     virtual ~Event() {}   // Destructor
 
