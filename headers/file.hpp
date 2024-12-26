@@ -27,7 +27,7 @@ public:
     void deleteProductFromFile(std::string name, Product product);
     void updateProductFile(std::string name, Product product);
     void readProductData(std::string name, std::vector<Product> products);
-    void addOrderToFile();
+    void addOrderToFile(std::string name, Order order);
     int isLoyalCustomer();
     void readOrderData();
     void addEventToFile();
