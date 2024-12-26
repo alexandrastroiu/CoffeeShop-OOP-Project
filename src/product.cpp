@@ -4,11 +4,12 @@
 using namespace std;
 
 // Constructor
-Product::Product(string productName, string productType, int quantity, float price) {
+Product::Product(string productName, string productType, int quantity, float price, float cost) {
     this->productName = productName;
     this->productType = productType;
     this->quantity = quantity;
     this->price = price;
+    this->cost = cost;
 }
 
 // Setters
@@ -28,6 +29,10 @@ void Product::setPrice(float price) {
     this->price = price;
 }
 
+void Product::setCost(float cost) {
+    this->cost = cost;
+}
+
 // Getters
 string Product::getProductName() {
     return this->productName;
@@ -45,8 +50,13 @@ float Product::getPrice() {
     return this->price;
 }
 
+float Product::getCost() {
+    return this->cost;
+}
+
 // Method
 void Product::showProductInfo() {
     cout << "Product Info: " << endl;
-    cout << "Product Name: " << this->productName << " Product Type: " << this->productType << " Price: " << this->price << " Quantity: " << this->quantity << endl;
+    cout << "Product Name: " << this->productName << " Product Type: " << this->productType << endl;
+    cout << " Price: " << this->price << " Quantity: " << this->quantity << " Cost: " << this->cost << endl;
 }
