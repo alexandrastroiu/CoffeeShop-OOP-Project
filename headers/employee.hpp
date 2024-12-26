@@ -14,6 +14,11 @@ public:
 
     virtual void showEmployeeInfo() = 0;     /// Abstraction
     virtual void updateEmployeeHours(int start, int end) = 0;
+    std::string getEmployeeName();   // Getters
+    std::string getEmployeeRole();
+    int getShiftStart();
+    int getShiftEnd();
+    float getPayment();
 
     virtual ~Employee(); /// Destructor
 };
