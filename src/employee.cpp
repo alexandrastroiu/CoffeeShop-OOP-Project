@@ -15,6 +15,26 @@ Employee::Employee(string name, string role, int start, int end, float payment) 
 // Employee Destructor
 Employee::~Employee() {}
 
+void Employee::setName(std::string name) {
+    this->name = name;
+}
+
+void Employee::setRole(std::string role) {
+    this->role = role;
+}
+
+void Employee::setStart(int start) {
+    this->shiftStart = start;
+}
+
+void Employee::setEnd(int end) {
+    this->shiftEnd = end;
+}
+
+void Employee::setPayment(float payment) {
+    this->payment = payment;
+}
+
 std::string Employee::getEmployeeName() {
     return name;
 }
