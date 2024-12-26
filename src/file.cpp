@@ -143,8 +143,57 @@ void FileHandling::updateEmployeeFile(std::string name, Employee* employee, int 
      }
 }
 
-void FileHandling::readEmployeeData(std::string name, std::vector<Employee> employees) {
+void FileHandling::readEmployeeData(std::string name, std::vector<Employee*>& employees) {
+    this->setFileName(name);
 
+    try {             // Exceptions
+        fstream in;
+
+        in.open(fileName, ios::in);
+
+        if (!in.is_open()) {
+            throw "Error: Unable to open file.";
+        }
+
+        string line, word;
+        vector<string> row;
+
+        getline(in, line);
+        
+        while (getline(in, line))
+        {
+            row.clear();
+            stringstream s(line);
+            Employee* employee = nullptr;
+
+            while (getline(s, word, ','))
+            {
+                row.push_back(word);
+            }
+
+            if (row[1] == "Manager") {
+                employee = new Manager(row[0], row[1], stoi(row[2]), stoi(row[3]), stof(row[4]));
+            }
+            else if (row[1] == "Barista") {
+                employee = new Barista(row[0], row[1], stoi(row[2]), stoi(row[3]), stof(row[4]));
+            }
+            else if (row[1] == "Waiter") {
+                employee = new Waiter(row[0], row[1], stoi(row[2]), stoi(row[3]), stof(row[4]));
+            }
+
+            if (employee != nullptr) {
+                employees.push_back(employee);
+            }
+
+        }
+
+        in.close();
+
+    }
+    catch(const char* message) {
+        cout << message << endl;
+        return;
+    }
 }
 
 void FileHandling::addProductToFile(std::string name, Product product) {

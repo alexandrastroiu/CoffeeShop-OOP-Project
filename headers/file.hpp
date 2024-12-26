@@ -22,7 +22,7 @@ public:
     void addEmployeeToFile(std::string name, Employee* employee);
     void deleteEmployeeFromFile(std::string name, Employee* employee);
     void updateEmployeeFile(std::string name, Employee* employee, int start, int end);
-    void readEmployeeData(std::string name, std::vector<Employee> employees);
+    void readEmployeeData(std::string name, std::vector<Employee*>& employees);
     void addProductToFile(std::string name, Product product);
     void deleteProductFromFile(std::string name, Product product);
     void updateProductFile(std::string name, Product product);
