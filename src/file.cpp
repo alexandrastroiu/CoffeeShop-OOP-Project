@@ -221,3 +221,41 @@ void FileHandling::deleteProductFromFile(std::string name, Product product) {
     }
 }
 
+void FileHandling::updateProductFile() {
+
+}
+
+void FileHandling::readProductData() {
+
+}
+
+void FileHandling::addOrderToFile(std::string name, Order order) {
+
+    this->setFileName(name);
+
+    try {      // Exceptions
+        fstream out;
+
+        out.open(fileName, ios::app); /// append
+
+        if (!out.is_open())
+        {
+            throw "Error: Unable to open file.";
+        }
+        out << order.getClientName() << ",";
+
+        for(auto product : order.getProducts()) {
+            out << product.getProductName() << " ";
+        }
+
+        out <<  "," << order.calculateTotalPrice() << endl;
+
+        out.close();
+    }
+    catch(const char* message) {
+        cout << message << endl;
+        return;
+    }
+}
+
+
