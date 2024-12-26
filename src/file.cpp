@@ -321,10 +321,19 @@ void FileHandling::addEventToFile(std::string name, Event* event) {
             throw "Error: Unable to open file.";
         }
 
-        out <<
-    }
-    catch() {
+        out << event->getEventName() << ",";
 
+        for(auto product : event->getEventProducts()) {
+            out << product.getProductName() << " ";
+        }
+
+        out << "," << event->getTotalEventCost() << endl;
+
+        out.close();
+    }
+    catch(const char* message) {
+        cout << message << endl;
+        return;
     }
 }
 
