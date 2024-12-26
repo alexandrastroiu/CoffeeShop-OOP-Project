@@ -29,9 +29,9 @@ public:
     void readProductData(std::string name, std::vector<Product>& products);
     void addOrderToFile(std::string name, Order order);
     int isLoyalCustomer(std::string name, std::string client);
-    void readOrderData();
+    void readOrderData(std::string name, std::vector<Order>& orders);
     void addEventToFile(std::string name, Event* event);
-    void readEventData();
+    void readEventData(std::string name, std::vector<Event*>& events);
     void addReportToFile(std::string name);
     void readReportData();
 

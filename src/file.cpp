@@ -270,7 +270,7 @@ void FileHandling::deleteProductFromFile(std::string name, Product product) {
     }
 }
 
-void FileHandling::updateProductFile() {
+void FileHandling::updateProductFile() {   //TODO
 
 }
 
@@ -307,7 +307,7 @@ void FileHandling::readProductData(std::string name, std::vector<Product>& produ
         }
 
         in.close();
-        
+
     }
     catch(const char* message) {
         cout << message << endl;
@@ -389,8 +389,44 @@ int FileHandling::isLoyalCustomer(std::string name, std::string client) {
     }
 }
 
-void FileHandling::readOrderData() {
+void FileHandling::readOrderData(std::string name, std::vector<Order>& orders) {
 
+    this->setFileName(name);
+
+    try {
+        fstream in;
+
+        in.open(fileName, ios::in);
+
+        if (!in.is_open()) {
+            throw "Error: Unable to open file.";
+        }
+
+        string line, word;
+        vector<string> row;
+
+        getline(in, line);
+
+        while (getline(in, line))
+        {
+            row.clear();
+            stringstream s(line);
+
+            while (getline(s, word, ','))
+            {
+                row.push_back(word);   //TODO  REPORT AND EVENTS AND ORDERS AND CREATE FILES (CSV)
+            }
+
+            
+
+        }
+
+        in.close();
+    }
+    catch(const char* message) {
+        cout << message << endl;
+        return;
+    }
 }
 
 void FileHandling::addEventToFile(std::string name, Event* event) {
@@ -423,7 +459,7 @@ void FileHandling::addEventToFile(std::string name, Event* event) {
     }
 }
 
-void FileHandling::readEventData() {
+void FileHandling::readEventData(std::string name, std::vector<Event*>& events) {
 
 }
 
