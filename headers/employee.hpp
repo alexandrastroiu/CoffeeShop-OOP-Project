@@ -19,6 +19,11 @@ public:
     int getShiftStart();
     int getShiftEnd();
     float getPayment();
+    void setName(std::string name);
+    void setRole(std::string role);
+    void setStart(int start);
+    void setEnd(int end);
+    void setPayment(float payment);  // Setters
 
     virtual ~Employee(); /// Destructor
 };
