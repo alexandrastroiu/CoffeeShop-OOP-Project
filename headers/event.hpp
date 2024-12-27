@@ -16,6 +16,9 @@ class Event {
 
     virtual float calculateEventCost() = 0;    // Abstraction
     virtual void showEventInfo() = 0;
+    std::string getEventName();                  // Getters
+    std::vector<Product> getEventProducts();
+    float getTotalEventCost();
 
     virtual ~Event() {}   // Destructor
 
@@ -28,6 +31,7 @@ class CoffeeTastingEvent: public Event {
 
     public:
     CoffeeTastingEvent(std::string eventName, std::vector<Product> products, float cost, float marketingCost);
+    CoffeeTastingEvent(std::string eventName, std::vector<Product> products, float cost);
 
     float calculateEventCost() override;
     void showEventInfo() override;
@@ -39,6 +43,7 @@ class LiveMusicEvent: public Event {
 
     public:
     LiveMusicEvent(std::string eventName, std::vector<Product> products, float cost, float bandCost, float marketingCost);
+    LiveMusicEvent(std::string eventName, std::vector<Product> products, float cost);
 
     float calculateEventCost() override;
     void showEventInfo() override;

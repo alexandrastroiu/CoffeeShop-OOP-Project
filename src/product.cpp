@@ -12,6 +12,14 @@ Product::Product(string productName, string productType, int quantity, float pri
     this->cost = cost;
 }
 
+Product::Product(std::string productName) {
+    this->productName = productName;
+    productType = "";
+    quantity = 0;
+    price = 0.0;
+    cost = 0.0;
+}
+
 // Setters
 void Product::setProductName(string name) {
     productName = name;

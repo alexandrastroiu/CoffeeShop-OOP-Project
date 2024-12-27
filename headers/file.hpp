@@ -4,6 +4,10 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include "../headers/product.hpp"
+#include "../headers/order.hpp"
+#include "../headers/employee.hpp"
+#include "../headers/event.hpp"
 
 class FileHandling {
 private: // Encapsulation
@@ -15,20 +19,21 @@ public:
 
     void setFileName(std::string fileName); // Setter
     std::string getFileName();              // Getter
-    void addEmployeeToFile();
-    void deleteEmployeeFromFile();
-    void updateEmployeeFile();
-    void readEmployeeFile();
-    void addProductToFile();
-    void deleteProductFromFile();
-    void updateProductFile();
-    void readProductFile();
-    void addOrderToFile();
-    void readOrderFile();
-    void addEventToFile();
-    void readEventFile();
-    void addReportToFile();
-    void readReportFile();
+    void addEmployeeToFile(std::string name, Employee* employee);
+    void deleteEmployeeFromFile(std::string name, Employee* employee);
+    void updateEmployeeFile(std::string name, Employee* employee, int start, int end);
+    void readEmployeeData(std::string name, std::vector<Employee*>& employees);
+    void addProductToFile(std::string name, Product product);
+    void deleteProductFromFile(std::string name, Product product);
+    void updateProductFile(std::string name, Product product, int newQuantity);
+    void readProductData(std::string name, std::vector<Product>& products);
+    void addOrderToFile(std::string name, Order order);
+    int isLoyalCustomer(std::string name, std::string client);
+    void readOrderData(std::string name, std::vector<Order>& orders);
+    void addEventToFile(std::string name, Event* event);
+    void readEventData(std::string name, std::vector<Event*>& events);
+    void addReportToFile(std::string name);
+    void readReportData();
 
 
     ~FileHandling() = default; // Default Destructor
