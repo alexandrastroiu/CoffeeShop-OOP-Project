@@ -27,11 +27,15 @@ CoffeeTastingEvent::CoffeeTastingEvent(std::string eventName, std::vector<Produc
     this->marketingCost = marketingCost;
 }
 
+CoffeeTastingEvent::CoffeeTastingEvent(std::string eventName, std::vector<Product> products, float cost): Event(eventName, products, cost) {}
+
 // LiveMusicEvent Constructor
 LiveMusicEvent::LiveMusicEvent(std::string eventName, std::vector<Product> products, float cost, float bandCost, float marketingCost): Event(eventName, products, cost) {
     this->marketingCost = marketingCost;
     this->bandCost = bandCost;
 }
+
+LiveMusicEvent::LiveMusicEvent(std::string eventName, std::vector<Product> products, float cost): Event(eventName, products, cost) {}
 
 void CoffeeTastingEvent::showEventInfo() {
     cout << "Cofee Tasting Event Info: " << endl;
