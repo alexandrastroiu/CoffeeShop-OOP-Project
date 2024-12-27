@@ -13,7 +13,7 @@ class Coffeeshop {
     private:       // Encapsulation
     std::string city;
     int employeesNumber;
-    std::vector<Employee*> allEmployees; ///TODO CHECK FOR *
+    std::vector<Employee*> allEmployees; 
     std::vector<Product> allProducts;
     std::vector<Order> allOrders;
     std::vector<Event*> allEvents;
