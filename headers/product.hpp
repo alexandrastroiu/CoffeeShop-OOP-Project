@@ -12,6 +12,7 @@ class Product {
 
     public:
     Product(std::string productName, std::string productType, int quantity, float price, float cost);
+    Product(std::string productName);
 
     void setProductName(std::string name);  // Setters
     void setProductType(std::string type);
