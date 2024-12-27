@@ -270,8 +270,57 @@ void FileHandling::deleteProductFromFile(std::string name, Product product) {
     }
 }
 
-void FileHandling::updateProductFile() {   //TODO
+void FileHandling::updateProductFile(std::string name, Product product, int newQuantity) {
 
+    this->setFileName(name);
+
+    try {
+        fstream in, out;
+
+        in.open(fileName, ios::in);
+        out.open("output.csv", ios::out);
+
+        if (!out.is_open() || !in.is_open())
+        {
+            throw "Error: Unable to open file.";
+        }
+
+        string line, word;
+        vector<string> row;
+
+        getline(in, line);
+        out << line << endl;
+
+        while (getline(in, line))
+        {
+            row.clear();
+            stringstream s(line);
+
+            while (getline(s, word, ','))
+            {
+                row.push_back(word);
+            }
+
+            if (!(row[0] == product.getProductName() && row[1] == product.getProductType() && stoi(row[2]) == product.getQuantity() && stof(row[3]) ==  product.getPrice() && stof(row[4]) == product.getCost()))
+            {
+                out << line << endl;
+            }
+            else
+            {
+                out << row[0] << "," << row[1] << "," << newQuantity << "," << row[3] << "," << row[4] << endl;
+            }
+        }
+
+        in.close();
+        out.close();
+
+        remove(fileName.c_str());
+        rename("output.csv", fileName.c_str());
+    }
+    catch(const char* message) {
+        cout << message << endl;
+        return;
+    }
 }
 
 void FileHandling::readProductData(std::string name, std::vector<Product>& products) {
@@ -331,10 +380,10 @@ void FileHandling::addOrderToFile(std::string name, Order order) {
         out << order.getClientName() << ",";
 
         for(auto product : order.getProducts()) {
-            out << product.getProductName() << " ";
+            out << product.getProductName() << ",";
         }
 
-        out <<  "," << order.calculateTotalPrice() << endl;
+        out << order.calculateTotalPrice() << endl;
 
         out.close();
     }
@@ -411,14 +460,23 @@ void FileHandling::readOrderData(std::string name, std::vector<Order>& orders) {
         {
             row.clear();
             stringstream s(line);
+            std::vector<Product> orderProducts;
 
             while (getline(s, word, ','))
             {
                 row.push_back(word);   //TODO  REPORT AND EVENTS AND ORDERS AND CREATE FILES (CSV)
             }
 
-            
+            int size = row.size();
 
+            for (int i = 1; i < size - 1; i++) {
+                Product product(row[i]);
+                orderProducts.push_back(product);
+            }
+          
+            Order order(row[0], orderProducts);
+            order.setTotalPrice(stof(row[size - 1]));
+            orders.push_back(order);
         }
 
         in.close();
@@ -446,10 +504,10 @@ void FileHandling::addEventToFile(std::string name, Event* event) {
         out << event->getEventName() << ",";
 
         for(auto product : event->getEventProducts()) {
-            out << product.getProductName() << " ";
+            out << product.getProductName() << ",";
         }
 
-        out << "," << event->getTotalEventCost() << endl;
+        out << event->getTotalEventCost() << endl;
 
         out.close();
     }
@@ -461,6 +519,59 @@ void FileHandling::addEventToFile(std::string name, Event* event) {
 
 void FileHandling::readEventData(std::string name, std::vector<Event*>& events) {
 
+    this->setFileName(name);
+
+    try {
+        fstream in;
+
+        in.open(fileName, ios::in);
+
+        if (!in.is_open()) {
+            throw "Error: Unable to open file.";
+        }
+
+        string line, word;
+        vector<string> row;
+        std::vector<Product> eventProducts;
+
+        getline(in, line);
+        
+        while (getline(in, line))
+        {
+            row.clear();
+            stringstream s(line);
+            Event* event;
+
+            while (getline(s, word, ','))
+            {
+                row.push_back(word);  
+            }
+
+            int size = row.size();
+
+            for (int i = 1; i < size - 1; i++) {
+                Product product(row[i]);
+                eventProducts.push_back(product);
+            }
+          
+            if (row[1] == "Coffee Tasting") {
+                event = new CoffeeTastingEvent(row[1], eventProducts, stof(row[size -1]));
+            }
+            else if (row[1] == "Live Music") {
+                event = new LiveMusicEvent(row[1], eventProducts, stof(row[size - 1]));
+            }
+
+            events.push_back(event);
+           
+        }
+
+        in.close();
+
+    }
+    catch(const char* message) {
+        cout << message << endl;
+        return;
+    }
 }
 
 void FileHandling::addReportToFile(std::string name) {
