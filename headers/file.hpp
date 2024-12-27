@@ -25,7 +25,7 @@ public:
     void readEmployeeData(std::string name, std::vector<Employee*>& employees);
     void addProductToFile(std::string name, Product product);
     void deleteProductFromFile(std::string name, Product product);
-    void updateProductFile(std::string name, Product product);
+    void updateProductFile(std::string name, Product product, int newQuantity);
     void readProductData(std::string name, std::vector<Product>& products);
     void addOrderToFile(std::string name, Order order);
     int isLoyalCustomer(std::string name, std::string client);
