@@ -521,7 +521,7 @@ void FileHandling::readEventData(std::string name, std::vector<Event*>& events) 
 
     this->setFileName(name);
 
-    try {
+    try {           // Exceptions
         fstream in;
 
         in.open(fileName, ios::in);
@@ -574,10 +574,26 @@ void FileHandling::readEventData(std::string name, std::vector<Event*>& events) 
     }
 }
 
-void FileHandling::addReportToFile(std::string name) {
+void FileHandling::addReportToFile(std::string name, float revenue, float cost, float income, float productsCost, float employeesCost) {
 
-}
+    this->setFileName(name);
 
-void FileHandling::readReportData() {
+    try {              // Exceptions
+        fstream out;
 
+        out.open(fileName, ios::app); /// append
+
+        if (!out.is_open())
+        {
+            throw "Error: Unable to open file.";
+        }
+
+        out << revenue << "," << cost << "," << income << "," << productsCost << "," << employeesCost << endl;
+        out.close();
+
+    }
+    catch(const char* message) {
+        cout << message << endl;
+        return;
+    }
 }
