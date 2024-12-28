@@ -55,6 +55,10 @@ float Employee::getPayment() {
     return payment;
 }
 
+bool Employee::operator==(const Employee &employee) {
+    return (this->name == employee.name && this->role == employee.role);
+}
+
 // Manager Constructor
 Manager::Manager(string name, string role, int start, int end, float payment): Employee(name, role, start, end, payment) {}
 
