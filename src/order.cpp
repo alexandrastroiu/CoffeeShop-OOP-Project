@@ -24,11 +24,14 @@ void Order::setTotalPrice(float price) {
 
 vector<Product> Order::getProducts() {
     return products;
-
 }
 
 string Order::getClientName() {
    return clientName;
+}
+
+float Order::getTotalPrice() {
+    return totalPrice;
 }
 
 void Order::showOrderInfo() {
@@ -48,6 +51,7 @@ float Order::calculateTotalPrice() {
         sum += currentPrice;
     }
    
+    totalPrice = sum;
     return sum;
 }
 
