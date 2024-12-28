@@ -43,30 +43,30 @@ void Product::setCost(float cost) {
 
 // Getters
 string Product::getProductName() {
-    return this->productName;
+    return productName;
 }
 
 string Product::getProductType() {
-    return this->productType;
+    return productType;
 }
 
 int Product::getQuantity() {
-    return this->quantity;
+    return quantity;
 }
 
 float Product::getPrice() {
-    return this->price;
+    return price;
 }
 
 float Product::getCost() {
-    return this->cost;
+    return cost;
 }
 
 // Method
 void Product::showProductInfo() {
     cout << "Product Info: " << endl;
-    cout << "Product Name: " << this->productName << " Product Type: " << this->productType << endl;
-    cout << " Price: " << this->price << " Quantity: " << this->quantity << " Cost: " << this->cost << endl;
+    cout << "Product Name: " << productName << " Product Type: " << productType << endl;
+    cout << " Price: " << price << " Quantity: " << quantity << " Cost: " << cost << endl;
 }
 
 bool Product::operator==(const Product &product) {
