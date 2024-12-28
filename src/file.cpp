@@ -383,7 +383,7 @@ void FileHandling::addOrderToFile(std::string name, Order order) {
             out << product.getProductName() << ",";
         }
 
-        out << order.calculateTotalPrice() << endl;
+        out << order.calculateTotalPrice(name) << endl;
 
         out.close();
     }
