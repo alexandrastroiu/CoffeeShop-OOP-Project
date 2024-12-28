@@ -2,6 +2,7 @@
 #define ORDER_H
 
 #include "../headers/product.hpp"
+#include "../headers/file.hpp"
 #include <string>
 #include <vector>
 
@@ -21,7 +22,7 @@ class Order {
     std::string getClientName(); //Getter
     std::vector<Product> getProducts(); // Getter
     float getTotalPrice(); // Getter
-    float calculateTotalPrice(); // Method
+    float calculateTotalPrice(std::string name); // Method
 
     ~Order() = default;  // Default Destructor
 };
