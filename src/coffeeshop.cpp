@@ -11,6 +11,7 @@ Coffeeshop::Coffeeshop(std::string city, int number) {
     dailyIncome = 0.0;
     productsCost = 0.0;
     employeesCost = 0.0;
+    eventsCost = 0.0;
 }
 
 // Destructor
@@ -47,14 +48,14 @@ void Coffeeshop::showCoffeeshopInfo() {
     cout << "Employee number: " << employeesNumber << endl;
 }
 
-void Coffeeshop::getAllEmployees(std::string fileName, std::vector<Employee*>& allEmployees) {
+void Coffeeshop::getAllEmployees(std::string fileName) {
     FileHandling file(fileName);
 
     file.readEmployeeData(fileName, allEmployees);
 }
 
 void Coffeeshop::addEmployee(std::string fileName, std::string name, std::string role, int start, int end, float payment) {
-    Employee* employee;
+    Employee* employee = nullptr;
     FileHandling file(fileName);
 
     if (role == "Manager") {
@@ -68,11 +69,15 @@ void Coffeeshop::addEmployee(std::string fileName, std::string name, std::string
         employee = new Waiter(name, role, start, end, payment);
     }
 
-    file.addEmployeeToFile(fileName, employee);
+    if (employee != nullptr) {
+
+        file.addEmployeeToFile(fileName, employee);
+        allEmployees.push_back(employee);
+    }
 }
 
 void Coffeeshop::deleteEmployee(std::string fileName, std::string name, std::string role, int start, int end, float payment) {
-    Employee* employee;
+    Employee* employee = nullptr;
     FileHandling file(fileName);
 
     if (role == "Manager") {
@@ -86,11 +91,14 @@ void Coffeeshop::deleteEmployee(std::string fileName, std::string name, std::str
         employee = new Waiter(name, role, start, end, payment);
     }
 
-    file.deleteEmployeeFromFile(fileName, employee);
+    if (employee != nullptr) {
+        file.deleteEmployeeFromFile(fileName, employee); // TODO
+        allEmployees.erase(find( allEmployees.begin(), allEmployees.end(), employee));
+    }
 }
 
 void Coffeeshop::updateEmployeeHours(std::string fileName, std::string name, std::string role, int start, int end, float payment, int newStart, int newEnd) {
-    Employee* employee;
+    Employee* employee = nullptr;
     FileHandling file(fileName);
 
     if (role == "Manager") {
@@ -104,14 +112,24 @@ void Coffeeshop::updateEmployeeHours(std::string fileName, std::string name, std
         employee = new Waiter(name, role, start, end, payment);
     }
 
-    file.updateEmployeeFile(fileName,employee, newStart, newEnd);
+    if (employee != nullptr) {
+        file.updateEmployeeFile(fileName, employee, newStart, newEnd);
+        delete employee;
+    }
 }
 
 float Coffeeshop::calculateEmployeesCost() {
+    float cost = 0.0;
 
+    for (auto employee : allEmployees) {
+        cost += employee->getPayment();
+    }
+
+    employeesCost = cost;
+    return cost;
 }
 
-void Coffeeshop::getAllProducts(std::string fileName, std::vector<Product>& allProducts) {
+void Coffeeshop::getAllProducts(std::string fileName) {
     FileHandling file(fileName);
 
     file.readProductData(fileName, allProducts);
@@ -141,7 +159,7 @@ void Coffeeshop::deleteProduct(std::string fileName,std::string productName, std
         if (product.getProductName() == productName && product.getProductType() == productType) {
             if (product.getQuantity() == 1) {
                 file.deleteProductFromFile(fileName, deletedProduct);
-                allProducts.erase(std::remove(allProducts.begin(), allProducts.end(), product), allProducts.end());
+                allProducts.erase(std::remove(allProducts.begin(), allProducts.end(), product), allProducts.end());//TODO DELETE
             }
             else {
                 file.updateProductFile(fileName, deletedProduct, product.getQuantity() - 1);
@@ -153,41 +171,76 @@ void Coffeeshop::deleteProduct(std::string fileName,std::string productName, std
 }
 
 float Coffeeshop::calculateProductsCost() {
+    float cost = 0.0;
 
+    for (auto product : allProducts) {
+        cost +=  product.getCost();
+    }
+
+    productsCost = cost;
+    return cost;
 }
 
-void Coffeeshop::getAllOrders(std::string fileName, std::vector<Order>& allOrders) {
+void Coffeeshop::getAllOrders(std::string fileName) {
     FileHandling file(fileName);
 
     file.readOrderData(fileName, allOrders);
 }
 
 void Coffeeshop::placeOrder(std::string fileName, Order order) {
+    FileHandling file(fileName);
 
+    file.addOrderToFile(fileName, order);
+    allOrders.push_back(order);
 }
 
-void Coffeeshop::getAllEvents(std::string fileName, std::vector<Event*>& allEvents) {
+void Coffeeshop::getAllEvents(std::string fileName) {
     FileHandling file(fileName);
 
     file.readEventData(fileName, allEvents);
 }
 
 void Coffeeshop::organizeEvent(std::string fileName, Event* event) {
+    FileHandling file(fileName);
 
+    file.addEventToFile(fileName, event);
+    allEvents.push_back(event);
+}
+
+float Coffeeshop::calculateEventsCost() {
+    float cost = 0.0;
+
+    for (auto event : allEvents) {
+        cost += event->getTotalEventCost();
+    }
+
+    eventsCost = cost;
+    return cost;
 }
 
 float Coffeeshop::calculateDailyRevenue() {
+    float sum = 0.0;
 
+    for (auto order : allOrders) {
+        sum += order.getTotalPrice();
+    }
+ 
+    dailyRevenue = sum;
+    return sum;
 }
 
 float Coffeeshop::calculateDailyCost() {
-
+    dailyCost = productsCost + employeesCost + eventsCost;
+    return dailyCost;
 }
 
 float Coffeeshop::calculateDailyIncome() {
-
+    dailyIncome = dailyRevenue - dailyCost;
+    return dailyIncome;
 }
 
-void Coffeeshop::createReport() {
+void Coffeeshop::createReport(std::string fileName) {
+    FileHandling file(fileName);
 
+    file.addReportToFile(fileName, dailyRevenue, dailyCost, dailyIncome, productsCost, employeesCost, eventsCost);
 }
