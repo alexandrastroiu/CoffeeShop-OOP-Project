@@ -32,7 +32,7 @@ public:
     void readOrderData(std::string name, std::vector<Order>& orders);
     void addEventToFile(std::string name, Event* event);
     void readEventData(std::string name, std::vector<Event*>& events);
-    void addReportToFile(std::string name, float revenue, float cost, float income, float productsCost, float employeesCost);
+    void addReportToFile(std::string name, float revenue, float cost, float income, float productsCost, float employeesCost, float eventsCost);
 
 
     ~FileHandling() = default; // Default Destructor

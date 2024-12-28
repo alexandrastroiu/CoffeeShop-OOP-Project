@@ -464,7 +464,7 @@ void FileHandling::readOrderData(std::string name, std::vector<Order>& orders) {
 
             while (getline(s, word, ','))
             {
-                row.push_back(word);   //TODO  REPORT AND EVENTS AND ORDERS AND CREATE FILES (CSV)
+                row.push_back(word);   //TODO CREATE FILES (CSV)
             }
 
             int size = row.size();
@@ -574,7 +574,7 @@ void FileHandling::readEventData(std::string name, std::vector<Event*>& events) 
     }
 }
 
-void FileHandling::addReportToFile(std::string name, float revenue, float cost, float income, float productsCost, float employeesCost) {
+void FileHandling::addReportToFile(std::string name, float revenue, float cost, float income, float productsCost, float employeesCost, float eventsCost) {
 
     this->setFileName(name);
 
@@ -588,7 +588,7 @@ void FileHandling::addReportToFile(std::string name, float revenue, float cost, 
             throw "Error: Unable to open file.";
         }
 
-        out << revenue << "," << cost << "," << income << "," << productsCost << "," << employeesCost << endl;
+        out << revenue << "," << cost << "," << income << "," << productsCost << "," << employeesCost << "," << eventsCost << endl;
         out.close();
 
     }
