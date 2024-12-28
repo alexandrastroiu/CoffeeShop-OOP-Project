@@ -20,6 +20,7 @@ class Order {
     void setTotalPrice(float price);
     std::string getClientName(); //Getter
     std::vector<Product> getProducts(); // Getter
+    float getTotalPrice(); // Getter
     float calculateTotalPrice(); // Method
 
     ~Order() = default;  // Default Destructor
