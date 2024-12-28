@@ -68,3 +68,7 @@ void Product::showProductInfo() {
     cout << "Product Name: " << this->productName << " Product Type: " << this->productType << endl;
     cout << " Price: " << this->price << " Quantity: " << this->quantity << " Cost: " << this->cost << endl;
 }
+
+bool Product::operator==(const Product &product) {
+    return (this->productName == product.productName && this->productType == product.productType && this->cost == product.cost && this->price == product.price && this->quantity == product.quantity);
+}
