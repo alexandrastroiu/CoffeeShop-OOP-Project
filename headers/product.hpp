@@ -25,6 +25,7 @@ class Product {
     int getQuantity();
     float getPrice();
     float getCost();
+    bool operator == (const Product &product); // overloading
 
    ~Product() = default; // Default Destructors
 };
