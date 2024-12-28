@@ -24,6 +24,7 @@ public:
     void setStart(int start);
     void setEnd(int end);
     void setPayment(float payment);  // Setters
+    bool operator == (const Employee &employee); // overloading
 
     virtual ~Employee(); /// Destructor
 };
