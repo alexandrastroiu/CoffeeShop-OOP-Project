@@ -23,7 +23,7 @@ class Coffeeshop {
     public:
     Coffeeshop(std::string city, int number);  // Constructor
     
-    //TODO: ADD REPORT AND FILES , CHECK METHODS  AND ATTRIBUTES AGAIN
+
     void setCity(std::string name);  // Setter
     void setEmployeesNumber(int number);
     std::string getCity();  // Getter
@@ -47,6 +47,7 @@ class Coffeeshop {
     float calculateDailyCost();
     float calculateDailyIncome();
     void createReport(std::string fileName);
+    
 
    ~Coffeeshop(); // Destructor
 };
