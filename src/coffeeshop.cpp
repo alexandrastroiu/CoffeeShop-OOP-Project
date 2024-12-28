@@ -92,8 +92,9 @@ void Coffeeshop::deleteEmployee(std::string fileName, std::string name, std::str
     }
 
     if (employee != nullptr) {
-        file.deleteEmployeeFromFile(fileName, employee); // TODO
+        file.deleteEmployeeFromFile(fileName, employee); 
         allEmployees.erase(find( allEmployees.begin(), allEmployees.end(), employee));
+        delete employee;
     }
 }
 
@@ -159,7 +160,7 @@ void Coffeeshop::deleteProduct(std::string fileName,std::string productName, std
         if (product.getProductName() == productName && product.getProductType() == productType) {
             if (product.getQuantity() == 1) {
                 file.deleteProductFromFile(fileName, deletedProduct);
-                allProducts.erase(std::remove(allProducts.begin(), allProducts.end(), product), allProducts.end());//TODO DELETE
+                allProducts.erase(find( allProducts.begin(), allProducts.end(), deletedProduct));
             }
             else {
                 file.updateProductFile(fileName, deletedProduct, product.getQuantity() - 1);
