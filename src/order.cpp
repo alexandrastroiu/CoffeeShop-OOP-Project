@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include "../headers/order.hpp"
 
@@ -44,16 +45,21 @@ void Order::showOrderInfo() {
     }
 }
 
-float Order::calculateTotalPrice() {
+float Order::calculateTotalPrice(std::string name) {
     float sum = 0.0;
+    FileHandling file(name);
+
     for (auto product : products) {
         float currentPrice = product.getPrice();
         sum += currentPrice;
     }
-   
-    totalPrice = sum;
-    return sum;
-}
 
-//TODO: sistem de reduceri
+    totalPrice = sum;
+
+    if (file.isLoyalCustomer(name, clientName)) {    // apply discount
+         totalPrice -= 0.5 * totalPrice;
+    }
+    
+    return totalPrice;
+}
 
