@@ -27,6 +27,10 @@ class Coffeeshop {
     void setCity(std::string name);  // Setter
     void setEmployeesNumber(int number);
     std::string getCity();  // Getter
+    void showAllEmployees();
+    void showAllProducts();
+    void showAllOrders();
+    void showAllEvents();
     int getEmployeesNumber();
     void showCoffeeshopInfo();
     void getAllEmployees(std::string fileName);

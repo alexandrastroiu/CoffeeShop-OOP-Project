@@ -43,6 +43,34 @@ int Coffeeshop::getEmployeesNumber() {
     return employeesNumber;
 }
 
+void Coffeeshop::showAllEmployees() {
+    cout << "All employees: " << endl;
+    for (auto employee : allEmployees) {
+        cout << employee->getEmployeeName() << endl;
+    }
+}
+
+void Coffeeshop::showAllEvents() {
+    cout << "All events: " << endl;
+    for (auto event : allEvents) {
+        cout << event->getEventName() << endl;
+    }
+}
+
+void Coffeeshop::showAllOrders() {
+    cout << "All orders: " << endl;
+    for (auto order : allOrders) {
+        cout << order.getClientName() << endl;
+    }
+}
+
+void Coffeeshop::showAllProducts() {
+    cout << "All products: " << endl;
+    for (auto product : allProducts) {
+        cout << product.getProductName() << endl;
+    }
+}
+
 void Coffeeshop::showCoffeeshopInfo() {
     cout << "City: " << city << endl;
     cout << "Employee number: " << employeesNumber << endl;
