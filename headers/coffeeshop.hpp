@@ -25,13 +25,14 @@ class Coffeeshop {
     
 
     void setCity(std::string name);  // Setter
-    void setEmployeesNumber(int number);
+    void setEmployeesNumber(int number); // Setter
     std::string getCity();  // Getter
     void showAllEmployees();
     void showAllProducts();
     void showAllOrders();
     void showAllEvents();
     int getEmployeesNumber();
+    std::vector<Product> getAllProductsVector(); // Getter
     void showCoffeeshopInfo();
     void getAllEmployees(std::string fileName);
     void addEmployee(std::string fileName, std::string name, std::string role, int start, int end, float payment);
