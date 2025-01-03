@@ -432,6 +432,7 @@ int FileHandling::isLoyalCustomer(std::string name, std::string client) {
         if(previousOrders > 2) {
             return 1;
         }
+        return 0;
     }
     catch(const char* message) {
         cout << message << endl;
