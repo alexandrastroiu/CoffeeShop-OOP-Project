@@ -13,6 +13,13 @@ using namespace std;
 
 int main() {
     Coffeeshop coffeeshop("Bucharest",3); ///first test
+    ///tested getAllEmployees,addEmployee,deleteEmployee,updateEmployeeHours
+    ///tested getAllProducts,addProduct,deleteProduct
+    //TODO: test calculateEmployeesCost
+    //TODO: test calculateProductsCost
+    //TODO: test getAllOrders placeOrder
+    //TODO: test getAllEvents organizeEvent calculateEventsCost
+    //TODO: test calculateDailyRevenue calculateDailyCost calculateDailyIncome createReport
 
     coffeeshop.getAllEmployees("../../data/employees_bucharest.csv");
     coffeeshop.showAllEmployees();
