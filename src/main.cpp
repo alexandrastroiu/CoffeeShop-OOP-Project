@@ -39,7 +39,7 @@ int main() {
     Product product1("Tea"), product2("Latte");
     vector<Product> orderProducts = {product1, product2}, allProducts = coffeeshop.getAllProductsVector();
     for (auto product : allProducts) {
-        for (auto& orderProduct : orderProducts) {
+        for (auto orderProduct : orderProducts) {
              if (product == orderProduct) {
                 orderProduct.setPrice(product.getPrice());
              }
