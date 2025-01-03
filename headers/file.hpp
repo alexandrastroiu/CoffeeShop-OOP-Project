@@ -5,9 +5,10 @@
 #include <vector>
 #include <fstream>
 #include "../headers/product.hpp"
-#include "../headers/order.hpp"
 #include "../headers/employee.hpp"
 #include "../headers/event.hpp"
+
+class Order; 
 
 class FileHandling {
 private: // Encapsulation
