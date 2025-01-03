@@ -31,7 +31,7 @@ string Order::getClientName() {
    return clientName;
 }
 
-float Order::getTotalPrice() {
+float Order::getTotalPrice() { 
     return totalPrice;
 }
 
