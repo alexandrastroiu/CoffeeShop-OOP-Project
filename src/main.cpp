@@ -17,7 +17,7 @@ int main() {
     coffeeshop.getAllEmployees("../../data/employees_bucharest.csv");
     coffeeshop.addEmployee("../../data/employees_bucharest.csv","Radu Ion", "Waiter", 9, 17, 120);
     coffeeshop.addEmployee("../../data/employees_bucharest.csv","Ana Dan", "Waiter", 9, 17, 120);
-    coffeeshop.deleteEmployee("../data/employees_bucharest.csv","Radu Ion", "Waiter", 9, 17, 120);
+    coffeeshop.deleteEmployee("../../data/employees_bucharest.csv","Radu Ion", "Waiter", 9, 17, 120);
     coffeeshop.updateEmployeeHours("../../data/employees_bucharest.csv","Ana Dan", "Waiter", 9, 17, 120, 9, 15);
     coffeeshop.getAllProducts("../../data/products_bucharest.csv");
     coffeeshop.addProduct("../../data/products_bucharest.csv", "Orange Juice", "Drinks", 5, 10, 5);
