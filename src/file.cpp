@@ -429,7 +429,7 @@ int FileHandling::isLoyalCustomer(std::string name, std::string client) {
 
         in.close();
 
-        if(previousOrders > 2) {
+        if(previousOrders >= 2) {
             return 1;
         }
         return 0;

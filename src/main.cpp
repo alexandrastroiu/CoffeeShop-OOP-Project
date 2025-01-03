@@ -49,8 +49,8 @@ int main() {
     // cout << order.calculateTotalPrice("../../data/orders_bucharest.csv") << endl;
     coffeeshop.getAllOrders("../../data/orders_bucharest.csv");
     coffeeshop.showAllOrders();
-    coffeeshop.placeOrder("../../data/orders_bucharest.csv", order);
-    coffeeshop.showAllOrders();
+    // coffeeshop.placeOrder("../../data/orders_bucharest.csv", order);
+    // coffeeshop.showAllOrders();
 
     return 0;
 }
