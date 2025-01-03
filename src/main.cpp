@@ -46,7 +46,7 @@ int main() {
         }
     }
     Order order("Ana Mihai", orderProducts);
-    cout << order.calculateTotalPrice("../../data/orders_bucharest.csv") << endl;
+    // cout << order.calculateTotalPrice("../../data/orders_bucharest.csv") << endl;
     coffeeshop.getAllOrders("../../data/orders_bucharest.csv");
     coffeeshop.showAllOrders();
     coffeeshop.placeOrder("../../data/orders_bucharest.csv", order);
