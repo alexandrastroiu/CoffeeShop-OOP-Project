@@ -193,7 +193,10 @@ void Coffeeshop::deleteProduct(std::string fileName,std::string productName, std
         if (product.getProductName() == productName && product.getProductType() == productType) {
             if (product.getQuantity() == 1) {
                 file.deleteProductFromFile(fileName, deletedProduct);
-                allProducts.erase(find( allProducts.begin(), allProducts.end(), deletedProduct));
+                auto it = find( allProducts.begin(), allProducts.end(), deletedProduct);
+                if (it != allProducts.end()) {
+                    allProducts.erase(it);
+                }  
             }
             else {
                 file.updateProductFile(fileName, deletedProduct, product.getQuantity() - 1);
