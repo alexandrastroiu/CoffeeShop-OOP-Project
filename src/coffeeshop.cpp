@@ -43,6 +43,10 @@ int Coffeeshop::getEmployeesNumber() {
     return employeesNumber;
 }
 
+std::vector<Product> Coffeeshop::getAllProductsVector() {
+    return allProducts;
+}
+
 void Coffeeshop::showAllEmployees() {
     cout << "All employees: " << endl;
     for (auto employee : allEmployees) {
