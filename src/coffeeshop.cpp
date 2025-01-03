@@ -122,7 +122,9 @@ void Coffeeshop::deleteEmployee(std::string fileName, std::string name, std::str
     if (employee != nullptr) {
         file.deleteEmployeeFromFile(fileName, employee); 
         
-        auto it = find( allEmployees.begin(), allEmployees.end(), employee);
+        auto it = find_if( allEmployees.begin(), allEmployees.end(), [employee](Employee *currentEmployee) {
+            return ((*currentEmployee).getEmployeeName() == (*employee).getEmployeeName() && (*currentEmployee).getEmployeeRole() == (*employee).getEmployeeRole());
+        });
         if (it != allEmployees.end()) {
             allEmployees.erase(it);
         }
