@@ -14,7 +14,7 @@ using namespace std;
 int main() {
     Coffeeshop coffeeshop("Bucharest",3); ///first test
 
-    coffeeshop.getAllEmployees("../data/employees_bucharest.csv");
+    coffeeshop.getAllEmployees("C:/Users/crist/OneDrive/Desktop/poo/colocviu/proiect-poo/data/employees_bucharest.csv");
     coffeeshop.addEmployee("../data/employees_bucharest.csv","Radu Ion", "Waiter", 9, 17, 120);
     coffeeshop.addEmployee("../data/employees_bucharest.csv","Ana Dan", "Waiter", 9, 17, 120);
     // coffeeshop.deleteEmployee("../data/employees_bucharest.csv","Radu Ion", "Waiter", 9, 17, 120);
