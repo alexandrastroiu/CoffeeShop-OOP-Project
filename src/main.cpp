@@ -62,7 +62,6 @@ int main() {
     LiveMusicEventFactory liveMusicFactory; //TODO: test events related methods
     Product product1("Latte");
     vector<Product> eventProducts = {product1};
-    Event* musicEvent = liveMusicFactory.createLiveMusicEvent("Live Music", eventProducts, 0, 500, 500);
     vector<Product> allProducts = coffeeshop.getAllProductsVector();
     for (auto &eventProduct : eventProducts)
     {
@@ -74,6 +73,7 @@ int main() {
             }
         }
     } 
+    Event* musicEvent = liveMusicFactory.createLiveMusicEvent("Live Music", eventProducts, 0, 500, 500);
     cout << musicEvent->calculateEventCost() << endl;
     musicEvent->showEventInfo();
     coffeeshop.getAllEvents("../../events_bucharest.csv");
