@@ -48,6 +48,10 @@ std::vector<Product> Coffeeshop::getAllProductsVector() {
 }
 
 void Coffeeshop::showAllEmployees() {
+    if (allEmployees.empty()) {
+        cout << "No employees to show." << endl;
+        return;
+    }
     cout << "All employees: " << endl;
     for (auto employee : allEmployees) {
         cout << employee->getEmployeeName() << endl;
@@ -55,6 +59,10 @@ void Coffeeshop::showAllEmployees() {
 }
 
 void Coffeeshop::showAllEvents() {
+    if (allEvents.empty()) {
+        cout << "No events to show." << endl;
+        return;
+    }
     cout << "All events: " << endl;
     for (auto event : allEvents) {
         cout << event->getEventName() << endl;
@@ -62,6 +70,10 @@ void Coffeeshop::showAllEvents() {
 }
 
 void Coffeeshop::showAllOrders() {
+    if (allOrders.empty()) {
+        cout << "No orders to show." << endl;
+        return;
+    }
     cout << "All orders: " << endl;
     for (auto order : allOrders) {
         cout << order.getClientName() << endl;
@@ -69,6 +81,10 @@ void Coffeeshop::showAllOrders() {
 }
 
 void Coffeeshop::showAllProducts() {
+    if (allProducts.empty()) {
+        cout << "No products to show." << endl;
+        return;
+    }
     cout << "All products: " << endl;
     for (auto product : allProducts) {
         cout << product.getProductName() << endl;
@@ -127,7 +143,7 @@ void Coffeeshop::deleteEmployee(std::string fileName, std::string name, std::str
         file.deleteEmployeeFromFile(fileName, employee); 
         
         auto it = find_if( allEmployees.begin(), allEmployees.end(), [employee](Employee *currentEmployee) {
-            return ((*currentEmployee).getEmployeeName() == (*employee).getEmployeeName() && (*currentEmployee).getEmployeeRole() == (*employee).getEmployeeRole());
+            return (currentEmployee->getEmployeeName() == employee->getEmployeeName() && currentEmployee->getEmployeeRole() == employee->getEmployeeRole());
         });
         if (it != allEmployees.end()) {
             allEmployees.erase(it);
