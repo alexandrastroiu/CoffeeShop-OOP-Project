@@ -464,9 +464,13 @@ void FileHandling::readOrderData(std::string name, std::vector<Order>& orders) {
             stringstream s(line);
             std::vector<Product> orderProducts;
 
+            if (line.empty()) {
+                continue;
+            }
+
             while (getline(s, word, ','))
             {
-                row.push_back(word);   //TODO CREATE FILES (CSV)
+                row.push_back(word);   
             }
 
             int size = row.size();
