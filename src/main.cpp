@@ -73,6 +73,9 @@ int main() {
             }
         }
     } 
+    for (auto& product : eventProducts) {
+    cout << product.getProductName() << ": " << product.getCost() << endl;
+}
     Event* musicEvent = liveMusicFactory.createLiveMusicEvent("Live Music", eventProducts, 0, 500, 500);
     cout << musicEvent->calculateEventCost() << endl;
     musicEvent->showEventInfo();
