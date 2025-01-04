@@ -544,9 +544,15 @@ void FileHandling::readEventData(std::string name, std::vector<Event*>& events) 
         
         while (getline(in, line))
         {
+
             row.clear();
             stringstream s(line);
             Event* event;
+
+            if (line.empty())
+            {
+                continue;
+            }
 
             while (getline(s, word, ','))
             {
