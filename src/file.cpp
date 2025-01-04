@@ -421,7 +421,7 @@ int FileHandling::isLoyalCustomer(std::string name, std::string client) {
                 row.push_back(word);
             }
 
-            if (row[0] == client)
+            if (!row.empty() && row[0] == client)
             {
                 previousOrders++;
             }
