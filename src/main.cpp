@@ -62,6 +62,7 @@ int main() {
     LiveMusicEventFactory liveMusicFactory; //TODO: test events related methods
     Product product1("Latte");
     vector<Product> eventProducts = {product1};
+    coffeeshop.getAllProducts("../../data/products_bucharest.csv");
     vector<Product> allProducts = coffeeshop.getAllProductsVector();
     for (auto& eventProduct : eventProducts)
     {
@@ -73,14 +74,14 @@ int main() {
             }
         }
     } 
-    for (auto& product : eventProducts) {
-    cout << product.getProductName() << ": " << product.getCost() << endl;
-}
+//     for (auto& product : eventProducts) {
+//     cout << product.getProductName() << ": " << product.getCost() << endl; //test by print
+// }
     Event* musicEvent = liveMusicFactory.createLiveMusicEvent("Live Music", eventProducts, 0, 500, 500);
     cout << musicEvent->calculateEventCost() << endl;
     musicEvent->showEventInfo();
-    // coffeeshop.getAllEvents("../../data/events_bucharest.csv");
-    // coffeeshop.showAllEvents();
+    coffeeshop.getAllEvents("../../data/events_bucharest.csv");
+    coffeeshop.showAllEvents();
     // coffeeshop.organizeEvent("../../data/events_bucharest.csv", musicEvent);
     // coffeeshop.getAllEvents("../../data/events_bucharest.csv");
     // coffeeshop.showAllEvents();
