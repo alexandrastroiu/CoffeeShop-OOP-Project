@@ -69,17 +69,17 @@ int main() {
         {
             if (product.getProductName() == eventProduct.getProductName())
             {
-                eventProduct.setPrice(product.getPrice());
+                eventProduct.setCost(product.getCost());
             }
         }
     } 
     Event* musicEvent = liveMusicFactory.createLiveMusicEvent("Live Music", eventProducts, 0, 500, 500);
     cout << musicEvent->calculateEventCost() << endl;
     musicEvent->showEventInfo();
-    coffeeshop.getAllEvents("../../events_bucharest.csv");
+    coffeeshop.getAllEvents("../../data/events_bucharest.csv");
     coffeeshop.showAllEvents();
-    coffeeshop.organizeEvent("../../events_bucharest.csv", musicEvent);
-    coffeeshop.getAllEvents("../../events_bucharest.csv");
+    coffeeshop.organizeEvent("../../data/events_bucharest.csv", musicEvent);
+    coffeeshop.getAllEvents("../../data/events_bucharest.csv");
     coffeeshop.showAllEvents();
     cout << coffeeshop.calculateEventsCost() << endl;
     
