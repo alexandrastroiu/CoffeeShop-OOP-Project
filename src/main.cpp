@@ -21,7 +21,7 @@ int main() {
     coffeeshop.deleteEmployee("../../data/employees_bucharest.csv","Radu Ion", "Waiter", 9, 17, 120);
     coffeeshop.showAllEmployees();
     coffeeshop.updateEmployeeHours("../../data/employees_bucharest.csv","Ana Dan", "Waiter", 9, 17, 120, 9, 15);
-    // cout << coffeeshop.calculateEmployeesCost();
+    cout << coffeeshop.calculateEmployeesCost() << endl;
     coffeeshop.getAllProducts("../../data/products_bucharest.csv");
     coffeeshop.addProduct("../../data/products_bucharest.csv", "Orange Juice", "Drinks", 1, 10, 5);
     coffeeshop.showAllProducts();
