@@ -28,8 +28,9 @@ int main() {
     // coffeeshop.deleteProduct("../../data/products_bucharest.csv", "Orange Juice", "Drinks", 1, 10, 5);
     // coffeeshop.showAllProducts();
 
-    Product product1("Tea"), product2("Latte");
+    Product product1("Tea"), product2("Latte"); //TODO:WORKS FROM HERE
     coffeeshop.getAllProducts("../../data/products_bucharest.csv");
+    coffeeshop.showAllProducts();
     vector<Product> orderProducts = {product1, product2}, allProducts = coffeeshop.getAllProductsVector();
     for (auto &orderProduct : orderProducts)
     {
@@ -40,14 +41,14 @@ int main() {
                 orderProduct.setPrice(product.getPrice());
             }
         }
-    }
+    } 
 
-    Order order("Ana Mihai", orderProducts);
+    Order order("Ana Mihai", orderProducts); //TODO: WORKS UNTIL HERE
     cout << order.calculateTotalPrice("../../data/orders_bucharest.csv") << endl;
-    coffeeshop.getAllOrders("../../data/orders_bucharest.csv");
-    coffeeshop.showAllOrders();
-    coffeeshop.placeOrder("../../data/orders_bucharest.csv", order);
-    coffeeshop.showAllOrders();
+    // coffeeshop.getAllOrders("../../data/orders_bucharest.csv");
+    // coffeeshop.showAllOrders();
+    // coffeeshop.placeOrder("../../data/orders_bucharest.csv", order);
+    // coffeeshop.showAllOrders();
 
     return 0;
 }
