@@ -28,7 +28,7 @@ int main() {
     // coffeeshop.deleteProduct("../../data/products_bucharest.csv", "Orange Juice", "Drinks", 1, 10, 5);
     // coffeeshop.showAllProducts();
 
-    Product product1("Tea"), product2("Latte");
+    Product product1("Tea"), product2("Latte"); //TODO:WORKS FROM HERE
     coffeeshop.getAllProducts("../../data/products_bucharest.csv");
     coffeeshop.showAllProducts();
     vector<Product> orderProducts = {product1, product2}, allProducts = coffeeshop.getAllProductsVector();
@@ -41,9 +41,9 @@ int main() {
                 orderProduct.setPrice(product.getPrice());
             }
         }
-    }
+    } //TODO: WORKS UNTIL HERE
 
-    // Order order("Ana Mihai", orderProducts);
+    Order order("Ana Mihai", orderProducts);
     // cout << order.calculateTotalPrice("../../data/orders_bucharest.csv") << endl;
     // coffeeshop.getAllOrders("../../data/orders_bucharest.csv");
     // coffeeshop.showAllOrders();
