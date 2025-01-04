@@ -48,46 +48,84 @@ std::vector<Product> Coffeeshop::getAllProductsVector() {
 }
 
 void Coffeeshop::showAllEmployees() {
-    if (allEmployees.empty()) {
-        cout << "No employees to show." << endl;
-        return;
+    try     // Exceptions
+    {
+        cout << "All employees: " << endl;
+        for (auto employee : allEmployees)
+        {
+            cout << employee->getEmployeeName() << endl;
+        }
+
+        if (allEmployees.empty())
+        {
+            throw "No employees to show.";
+        }
     }
-    cout << "All employees: " << endl;
-    for (auto employee : allEmployees) {
-        cout << employee->getEmployeeName() << endl;
+    catch (const char* message) {
+        cout << message << endl;
+        return;
     }
 }
 
-void Coffeeshop::showAllEvents() {
-    if (allEvents.empty()) {
-        cout << "No events to show." << endl;
-        return;
+void Coffeeshop::showAllEvents()
+{
+    try  // Exceptions
+    {
+        cout << "All events: " << endl;
+        for (auto event : allEvents)
+        {
+            cout << event->getEventName() << endl;
+        }
+
+        if (allEvents.empty())
+        {
+            throw "No events to show.";
+        }
     }
-    cout << "All events: " << endl;
-    for (auto event : allEvents) {
-        cout << event->getEventName() << endl;
+    catch (const char *message)
+    {
+        cout << message << endl;
+        return;
     }
 }
 
 void Coffeeshop::showAllOrders() {
-    if (allOrders.empty()) {
-        cout << "No orders to show." << endl;
-        return;
+    try   // Exceptions
+    {
+        cout << "All orders: " << endl;
+        for (auto order : allOrders)
+        {
+            cout << order.getClientName() << endl;
+        }
+
+        if (allOrders.empty())
+        {
+            throw "No orders to show.";
+        }
     }
-    cout << "All orders: " << endl;
-    for (auto order : allOrders) {
-        cout << order.getClientName() << endl;
+    catch (const char* message) {
+        cout << message << endl;
+        return;
     }
 }
 
 void Coffeeshop::showAllProducts() {
-    if (allProducts.empty()) {
-        cout << "No products to show." << endl;
-        return;
+    try   // Exceptions
+    {
+        cout << "All products: " << endl;  
+        for (auto product : allProducts)
+        {
+            cout << product.getProductName() << endl;
+        }
+
+        if (allProducts.empty())
+        {
+            throw "No products to show.";
+        }
     }
-    cout << "All products: " << endl;
-    for (auto product : allProducts) {
-        cout << product.getProductName() << endl;
+    catch (const char* message) {
+        cout << message << endl;
+        return;
     }
 }
 
