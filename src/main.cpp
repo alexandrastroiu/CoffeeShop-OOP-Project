@@ -63,7 +63,7 @@ int main() {
     Product product1("Latte");
     vector<Product> eventProducts = {product1};
     vector<Product> allProducts = coffeeshop.getAllProductsVector();
-    for (auto &eventProduct : eventProducts)
+    for (auto& eventProduct : eventProducts)
     {
         for (auto product : allProducts)
         {
@@ -76,12 +76,12 @@ int main() {
     Event* musicEvent = liveMusicFactory.createLiveMusicEvent("Live Music", eventProducts, 0, 500, 500);
     cout << musicEvent->calculateEventCost() << endl;
     musicEvent->showEventInfo();
-    coffeeshop.getAllEvents("../../data/events_bucharest.csv");
-    coffeeshop.showAllEvents();
-    coffeeshop.organizeEvent("../../data/events_bucharest.csv", musicEvent);
-    coffeeshop.getAllEvents("../../data/events_bucharest.csv");
-    coffeeshop.showAllEvents();
-    cout << coffeeshop.calculateEventsCost() << endl;
+    // coffeeshop.getAllEvents("../../data/events_bucharest.csv");
+    // coffeeshop.showAllEvents();
+    // coffeeshop.organizeEvent("../../data/events_bucharest.csv", musicEvent);
+    // coffeeshop.getAllEvents("../../data/events_bucharest.csv");
+    // coffeeshop.showAllEvents();
+    // cout << coffeeshop.calculateEventsCost() << endl;
     
 
     return 0;
