@@ -29,6 +29,7 @@ int main() {
     // coffeeshop.showAllProducts();
 
     Product product1("Tea"), product2("Latte");
+    coffeeshop.getAllProducts("../../data/products_bucharest.csv");
     vector<Product> orderProducts = {product1, product2}, allProducts = coffeeshop.getAllProductsVector();
     for (auto &orderProduct : orderProducts)
     {
@@ -43,9 +44,9 @@ int main() {
 
     Order order("Ana Mihai", orderProducts);
     cout << order.calculateTotalPrice("../../data/orders_bucharest.csv") << endl;
+    coffeeshop.getAllOrders("../../data/orders_bucharest.csv");
     coffeeshop.showAllOrders();
     coffeeshop.placeOrder("../../data/orders_bucharest.csv", order);
-    coffeeshop.getAllOrders("../../data/orders_bucharest.csv");
     coffeeshop.showAllOrders();
 
     return 0;
