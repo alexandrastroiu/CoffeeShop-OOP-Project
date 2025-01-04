@@ -30,6 +30,7 @@ int main() {
 
     Product product1("Tea"), product2("Latte"); //TODO:WORKS FROM HERE
     coffeeshop.getAllProducts("../../data/products_bucharest.csv");
+    cout << coffeeshop.calculateProductsCost() << endl;
     coffeeshop.showAllProducts();
     vector<Product> orderProducts = {product1, product2}, allProducts = coffeeshop.getAllProductsVector();
     for (auto &orderProduct : orderProducts)
