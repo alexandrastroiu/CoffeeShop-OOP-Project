@@ -271,7 +271,7 @@ float Coffeeshop::calculateProductsCost() {
     float cost = 0.0;
 
     for (auto product : allProducts) {
-        cost +=  product.getCost();
+        cost +=  product.getCost() * product.getQuantity();
     }
 
     productsCost = cost;
