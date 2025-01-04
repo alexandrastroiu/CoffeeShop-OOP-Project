@@ -41,10 +41,10 @@ int main() {
                 orderProduct.setPrice(product.getPrice());
             }
         }
-    } //TODO: WORKS UNTIL HERE
+    } 
 
-    Order order("Ana Mihai", orderProducts);
-    // cout << order.calculateTotalPrice("../../data/orders_bucharest.csv") << endl;
+    Order order("Ana Mihai", orderProducts); //TODO: WORKS UNTIL HERE
+    cout << order.calculateTotalPrice("../../data/orders_bucharest.csv") << endl;
     // coffeeshop.getAllOrders("../../data/orders_bucharest.csv");
     // coffeeshop.showAllOrders();
     // coffeeshop.placeOrder("../../data/orders_bucharest.csv", order);
