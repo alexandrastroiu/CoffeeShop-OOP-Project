@@ -5,43 +5,53 @@
 using namespace std;
 
 // Constructor
-Order::Order(string clientName, vector<Product> products) {
+Order::Order(string clientName, vector<Product> products)
+{
     this->clientName = clientName;
-    this->products =  products;
+    this->products = products;
     totalPrice = 0.0;
 }
 
-void Order::setClientName(string name) {
+void Order::setClientName(string name)
+{
     clientName = name;
 }
 
-void Order::setProducts(vector<Product> products) {
+void Order::setProducts(vector<Product> products)
+{
     this->products = products;
 }
 
-void Order::setTotalPrice(float price) {
+void Order::setTotalPrice(float price)
+{
     totalPrice = price;
 }
 
-vector<Product> Order::getProducts() {
+vector<Product> Order::getProducts()
+{
     return products;
 }
 
-string Order::getClientName() {
-   return clientName;
+string Order::getClientName()
+{
+    return clientName;
 }
 
-float Order::getTotalPrice() { 
+float Order::getTotalPrice()
+{
     return totalPrice;
 }
 
-void Order::showOrderInfo() {
-    cout << "Order Info: " << endl;
+void Order::showOrderInfo()
+{
+    cout << endl
+         << "Order Info: " << endl;
     cout << "Client: " << clientName << endl;
     cout << "Products: ";
 
-    for (auto product : products) {
-        cout << product.getProductName() << " "; 
+    for (auto product : products)
+    {
+        cout << product.getProductName() << " ";
     }
 }
 
@@ -56,7 +66,7 @@ float Order::calculateTotalPrice(std::string name)
     }
 
     if (file.isLoyalCustomer(name, clientName)) // apply discount
-    { 
+    {
         totalPrice = sum / 2;
     }
     else

@@ -3,7 +3,8 @@
 
 #include <string>
 
-class Employee {
+class Employee
+{
 protected:
     std::string name, role;
     int shiftStart, shiftEnd;
@@ -12,9 +13,9 @@ protected:
 public:
     Employee(std::string name, std::string role, int start, int end, float payment);
 
-    virtual void showEmployeeInfo() = 0;     /// Abstraction
+    virtual void showEmployeeInfo() = 0; /// Abstraction
     virtual void updateEmployeeHours(int start, int end) = 0;
-    std::string getEmployeeName();   // Getters
+    std::string getEmployeeName(); // Getters
     std::string getEmployeeRole();
     int getShiftStart();
     int getShiftEnd();
@@ -23,14 +24,15 @@ public:
     void setRole(std::string role);
     void setStart(int start);
     void setEnd(int end);
-    void setPayment(float payment);  // Setters
-    bool operator == (const Employee &employee); // overloading
+    void setPayment(float payment);            // Setters
+    bool operator==(const Employee &employee); // overloading
 
     virtual ~Employee(); /// Destructor
 };
 
 /// Inheritance
-class Manager : public Employee {
+class Manager : public Employee
+{
 public:
     Manager(std::string name, std::string role, int start, int end, float payment);
 
@@ -38,47 +40,53 @@ public:
     void updateEmployeeHours(int start, int end) override;
 };
 
-class Barista : public Employee {
+class Barista : public Employee
+{
 public:
     Barista(std::string name, std::string role, int start, int end, float payment);
 
     void showEmployeeInfo() override;
-    void updateEmployeeHours(int start, int end)  override;
+    void updateEmployeeHours(int start, int end) override;
 };
 
-class Waiter : public Employee {
+class Waiter : public Employee
+{
 public:
     Waiter(std::string name, std::string role, int start, int end, float payment);
 
-    void showEmployeeInfo() override;  /// Polymorphism
+    void showEmployeeInfo() override; /// Polymorphism
     void updateEmployeeHours(int start, int end) override;
 };
 
 /// Abstract Factory Pattern
-class EmployeeFactory {
-    public:
-    virtual Employee* createManager(std::string name, std::string role, int start, int end, float payment) = 0;
-    virtual Employee* createBarista(std::string name, std::string role, int start, int end, float payment) = 0;
-    virtual Employee* createWaiter(std::string name, std::string role, int start, int end, float payment) = 0;
+class EmployeeFactory
+{
+public:
+    virtual Employee *createManager(std::string name, std::string role, int start, int end, float payment) = 0;
+    virtual Employee *createBarista(std::string name, std::string role, int start, int end, float payment) = 0;
+    virtual Employee *createWaiter(std::string name, std::string role, int start, int end, float payment) = 0;
 
     virtual ~EmployeeFactory() = default; /// Destructor
 };
 
-class ManagerFactory: public EmployeeFactory {
+class ManagerFactory : public EmployeeFactory
+{
 public:
     Employee *createManager(std::string name, std::string role, int start, int end, float payment) override;
     Employee *createBarista(std::string name, std::string role, int start, int end, float payment) override;
     Employee *createWaiter(std::string name, std::string role, int start, int end, float payment) override;
 };
 
-class BaristaFactory: public EmployeeFactory {
+class BaristaFactory : public EmployeeFactory
+{
 public:
     Employee *createManager(std::string name, std::string role, int start, int end, float payment) override;
     Employee *createBarista(std::string name, std::string role, int start, int end, float payment) override;
     Employee *createWaiter(std::string name, std::string role, int start, int end, float payment) override;
 };
 
-class WaiterFactory: public EmployeeFactory {
+class WaiterFactory : public EmployeeFactory
+{
 public:
     Employee *createManager(std::string name, std::string role, int start, int end, float payment) override;
     Employee *createBarista(std::string name, std::string role, int start, int end, float payment) override;

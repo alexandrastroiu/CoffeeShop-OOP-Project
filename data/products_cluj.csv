@@ -1,10 +1,13 @@
 Name,Type,Quantity,Price,Cost
 Water,Drinks,200,10,4
-Espresso,Drinks,10,15,6
-Americano,Drinks,10,15,6
-Cappuccino,Drinks,10,17,8
+Espresso,Drinks,12,15,6
+Americano,Drinks,12,15,6
+Cappuccino,Drinks,15,17,8
+Flat White,Drinks,5,22,9
+Caramel Macchiato,Drinks,2,26,11
 Latte,Drinks,5,17,8
 Macchiato,Drinks,5,17,8
+Irish Coffee,Drinks,2,28,13
 Tea,Drinks,5,15,6
 Hot Chocolate,Drinks,5,15,6
 Chicken Sandwich,Food,5,21,13
@@ -13,6 +16,4 @@ Italian Sandwich,Food,4,28,15
 Club Sandwich,Food,3,28,15
 American Pancakes,Sweets,2,30,16
 Ice cream,Sweets,4,15,10
-Croissant,Sweets,2,12,6
 Chocolate Croissant,Sweets,2,15,8
-Cheesecake,Sweets,2,20,12
