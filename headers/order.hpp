@@ -3,28 +3,30 @@
 
 #include "../headers/product.hpp"
 #include "../headers/file.hpp"
+
 #include <string>
 #include <vector>
 
-class Order {
-    private:
+class Order
+{
+private:
     std::string clientName;
     std::vector<Product> products;
     float totalPrice;
 
-    public:
-    Order(std::string clientName, std::vector<Product> products);  // Constructor
+public:
+    Order(std::string clientName, std::vector<Product> products); // Constructor
 
-    void showOrderInfo(); //Method
-    void setClientName(std::string name); // Setter
-    void setProducts(std::vector<Product> products); //Setter 
+    void showOrderInfo();                            // Method
+    void setClientName(std::string name);            // Setter
+    void setProducts(std::vector<Product> products); // Setter
     void setTotalPrice(float price);
-    std::string getClientName(); //Getter
-    std::vector<Product> getProducts(); // Getter
-    float getTotalPrice(); // Getter
+    std::string getClientName();                 // Getter
+    std::vector<Product> getProducts();          // Getter
+    float getTotalPrice();                       // Getter
     float calculateTotalPrice(std::string name); // Method
 
-    ~Order() = default;  // Default Destructor
+    ~Order() = default; // Default Destructor
 };
 
 #endif

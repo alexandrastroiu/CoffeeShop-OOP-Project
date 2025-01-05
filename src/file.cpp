@@ -6,23 +6,28 @@
 
 using namespace std;
 
-FileHandling::FileHandling(std::string fileName) {
+FileHandling::FileHandling(std::string fileName)
+{
     this->fileName = fileName;
 }
 
-void FileHandling::setFileName(std::string fileName) {
+void FileHandling::setFileName(std::string fileName)
+{
     this->fileName = fileName;
 }
 
-std::string FileHandling::getFileName() {
+std::string FileHandling::getFileName()
+{
     return fileName;
 }
 
-void FileHandling::addEmployeeToFile(std::string name, Employee* employee) {
+void FileHandling::addEmployeeToFile(std::string name, Employee *employee)
+{
 
     this->setFileName(name);
-    
-    try{        // Exceptions
+
+    try
+    { // Exceptions
         fstream out;
 
         out.open(fileName, ios::app); /// append
@@ -31,22 +36,25 @@ void FileHandling::addEmployeeToFile(std::string name, Employee* employee) {
         {
             throw "Error: Unable to open file.";
         }
- 
+
         out << employee->getEmployeeName() << "," << employee->getEmployeeRole() << "," << employee->getShiftStart() << "," << employee->getShiftEnd() << "," << employee->getPayment() << endl;
 
         out.close();
     }
-    catch(const char* message) {
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
     }
 }
 
-void FileHandling::deleteEmployeeFromFile(std::string name, Employee* employee) {
+void FileHandling::deleteEmployeeFromFile(std::string name, Employee *employee)
+{
 
-       this->setFileName(name);
+    this->setFileName(name);
 
-       try {         // Exceptions
+    try
+    { // Exceptions
         fstream in, out;
 
         in.open(fileName, ios::in);
@@ -73,7 +81,7 @@ void FileHandling::deleteEmployeeFromFile(std::string name, Employee* employee) 
                 row.push_back(word);
             }
 
-            if (!(row[0] == employee->getEmployeeName() && row[1] == employee->getEmployeeRole() && stoi(row[2]) == employee->getShiftStart() && stoi(row[3]) ==  employee->getShiftEnd() && stof(row[4]) == employee->getPayment()))
+            if (!(row[0] == employee->getEmployeeName() && row[1] == employee->getEmployeeRole() && stoi(row[2]) == employee->getShiftStart() && stoi(row[3]) == employee->getShiftEnd() && stof(row[4]) == employee->getPayment()))
             {
                 out << line << endl;
             }
@@ -84,18 +92,21 @@ void FileHandling::deleteEmployeeFromFile(std::string name, Employee* employee) 
 
         remove(fileName.c_str());
         rename("output.csv", fileName.c_str());
-       }
-       catch(const char* message) {
+    }
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
-       }
+    }
 }
 
-void FileHandling::updateEmployeeFile(std::string name, Employee* employee, int start, int end) {
+void FileHandling::updateEmployeeFile(std::string name, Employee *employee, int start, int end)
+{
 
-     this->setFileName(name);
+    this->setFileName(name);
 
-     try {                // Exceptions
+    try
+    { // Exceptions
         fstream in, out;
 
         in.open(fileName, ios::in);
@@ -122,11 +133,12 @@ void FileHandling::updateEmployeeFile(std::string name, Employee* employee, int 
                 row.push_back(word);
             }
 
-            if (!(row[0] == employee->getEmployeeName() && row[1] == employee->getEmployeeRole() && stoi(row[2]) == employee->getShiftStart() && stoi(row[3]) ==  employee->getShiftEnd() && stof(row[4]) == employee->getPayment()))
+            if (!(row[0] == employee->getEmployeeName() && row[1] == employee->getEmployeeRole() && stoi(row[2]) == employee->getShiftStart() && stoi(row[3]) == employee->getShiftEnd() && stof(row[4]) == employee->getPayment()))
             {
                 out << line << endl;
             }
-            else {
+            else
+            {
                 row[2] = std::to_string(start);
                 row[3] = std::to_string(end);
                 out << row[0] << "," << row[1] << "," << row[2] << "," << row[3] << "," << row[4] << endl;
@@ -138,22 +150,26 @@ void FileHandling::updateEmployeeFile(std::string name, Employee* employee, int 
 
         remove(fileName.c_str());
         rename("output.csv", fileName.c_str());
-     }
-     catch(const char* message) {
+    }
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
-     }
+    }
 }
 
-void FileHandling::readEmployeeData(std::string name, std::vector<Employee*>& employees) {
+void FileHandling::readEmployeeData(std::string name, std::vector<Employee *> &employees)
+{
     this->setFileName(name);
 
-    try {             // Exceptions
+    try
+    { // Exceptions
         fstream in;
 
         in.open(fileName, ios::in);
 
-        if (!in.is_open()) {
+        if (!in.is_open())
+        {
             throw "Error: Unable to open file.";
         }
 
@@ -161,48 +177,53 @@ void FileHandling::readEmployeeData(std::string name, std::vector<Employee*>& em
         vector<string> row;
 
         getline(in, line);
-        
+
         while (getline(in, line))
         {
             row.clear();
             stringstream s(line);
-            Employee* employee = nullptr;
+            Employee *employee = nullptr;
 
             while (getline(s, word, ','))
             {
                 row.push_back(word);
             }
 
-            if (row[1] == "Manager") {
+            if (row[1] == "Manager")
+            {
                 employee = new Manager(row[0], row[1], stoi(row[2]), stoi(row[3]), stof(row[4]));
             }
-            else if (row[1] == "Barista") {
+            else if (row[1] == "Barista")
+            {
                 employee = new Barista(row[0], row[1], stoi(row[2]), stoi(row[3]), stof(row[4]));
             }
-            else if (row[1] == "Waiter") {
+            else if (row[1] == "Waiter")
+            {
                 employee = new Waiter(row[0], row[1], stoi(row[2]), stoi(row[3]), stof(row[4]));
             }
 
-            if (employee != nullptr) {
+            if (employee != nullptr)
+            {
                 employees.push_back(employee);
             }
-
         }
 
         in.close();
-
     }
-    catch(const char* message) {
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
     }
 }
 
-void FileHandling::addProductToFile(std::string name, Product product) {
+void FileHandling::addProductToFile(std::string name, Product product)
+{
 
     this->setFileName(name);
 
-    try {        // Exceptions
+    try
+    { // Exceptions
 
         fstream out;
 
@@ -217,17 +238,20 @@ void FileHandling::addProductToFile(std::string name, Product product) {
 
         out.close();
     }
-    catch(const char* message) {
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
     }
 }
 
-void FileHandling::deleteProductFromFile(std::string name, Product product) {
+void FileHandling::deleteProductFromFile(std::string name, Product product)
+{
 
     this->setFileName(name);
 
-    try {      // Exceptions
+    try
+    { // Exceptions
         fstream in, out;
 
         in.open(fileName, ios::in);
@@ -254,7 +278,7 @@ void FileHandling::deleteProductFromFile(std::string name, Product product) {
                 row.push_back(word);
             }
 
-            if (!(row[0] == product.getProductName() && row[1] == product.getProductType() && stoi(row[2]) == product.getQuantity() && stof(row[3]) ==  product.getPrice() && stof(row[4]) == product.getCost()))
+            if (!(row[0] == product.getProductName() && row[1] == product.getProductType() && stoi(row[2]) == product.getQuantity() && stof(row[3]) == product.getPrice() && stof(row[4]) == product.getCost()))
             {
                 out << line << endl;
             }
@@ -266,17 +290,20 @@ void FileHandling::deleteProductFromFile(std::string name, Product product) {
         remove(fileName.c_str());
         rename("output.csv", fileName.c_str());
     }
-    catch(const char* message) {
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
     }
 }
 
-void FileHandling::updateProductFile(std::string name, Product product, int newQuantity) {
+void FileHandling::updateProductFile(std::string name, Product product, int newQuantity)
+{
 
     this->setFileName(name);
 
-    try {
+    try
+    {
         fstream in, out;
 
         in.open(fileName, ios::in);
@@ -303,7 +330,7 @@ void FileHandling::updateProductFile(std::string name, Product product, int newQ
                 row.push_back(word);
             }
 
-            if (!(row[0] == product.getProductName() && row[1] == product.getProductType() && stoi(row[2]) == product.getQuantity() && stof(row[3]) ==  product.getPrice() && stof(row[4]) == product.getCost()))
+            if (!(row[0] == product.getProductName() && row[1] == product.getProductType() && stoi(row[2]) == product.getQuantity() && stof(row[3]) == product.getPrice() && stof(row[4]) == product.getCost()))
             {
                 out << line << endl;
             }
@@ -319,22 +346,26 @@ void FileHandling::updateProductFile(std::string name, Product product, int newQ
         remove(fileName.c_str());
         rename("output.csv", fileName.c_str());
     }
-    catch(const char* message) {
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
     }
 }
 
-void FileHandling::readProductData(std::string name, std::vector<Product>& products) {
+void FileHandling::readProductData(std::string name, std::vector<Product> &products)
+{
 
     this->setFileName(name);
 
-    try {
+    try
+    {
         fstream in;
 
         in.open(fileName, ios::in);
 
-        if (!in.is_open()) {
+        if (!in.is_open())
+        {
             throw "Error: Unable to open file.";
         }
 
@@ -352,25 +383,27 @@ void FileHandling::readProductData(std::string name, std::vector<Product>& produ
             {
                 row.push_back(word);
             }
- 
-           Product product(row[0], row[1], stoi(row[2]), stof(row[3]), stof(row[4]));
-           products.push_back(product);
+
+            Product product(row[0], row[1], stoi(row[2]), stof(row[3]), stof(row[4]));
+            products.push_back(product);
         }
 
         in.close();
-
     }
-    catch(const char* message) {
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
     }
 }
 
-void FileHandling::addOrderToFile(std::string name, Order order) {
+void FileHandling::addOrderToFile(std::string name, Order order)
+{
 
     this->setFileName(name);
 
-    try {      // Exceptions
+    try
+    { // Exceptions
         fstream out;
 
         out.open(fileName, ios::app); /// append
@@ -381,7 +414,8 @@ void FileHandling::addOrderToFile(std::string name, Order order) {
         }
         out << order.getClientName() << ",";
 
-        for(auto product : order.getProducts()) {
+        for (auto product : order.getProducts())
+        {
             out << product.getProductName() << ",";
         }
 
@@ -389,17 +423,20 @@ void FileHandling::addOrderToFile(std::string name, Order order) {
 
         out.close();
     }
-    catch(const char* message) {
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
     }
 }
 
-int FileHandling::isLoyalCustomer(std::string name, std::string client) {
+int FileHandling::isLoyalCustomer(std::string name, std::string client)
+{
     int previousOrders = 0;
     this->setFileName(name);
 
-    try {
+    try
+    {
         fstream in(fileName, ios::in);
 
         if (!in.is_open())
@@ -411,7 +448,7 @@ int FileHandling::isLoyalCustomer(std::string name, std::string client) {
         vector<string> row;
 
         getline(in, line);
-        
+
         while (getline(in, line))
         {
             row.clear();
@@ -430,27 +467,32 @@ int FileHandling::isLoyalCustomer(std::string name, std::string client) {
 
         in.close();
 
-        if(previousOrders >= 2) {
+        if (previousOrders >= 2)
+        {
             return 1;
         }
         return 0;
     }
-    catch(const char* message) {
+    catch (const char *message)
+    {
         cout << message << endl;
         return 0;
     }
 }
 
-void FileHandling::readOrderData(std::string name, std::vector<Order>& orders) {
+void FileHandling::readOrderData(std::string name, std::vector<Order> &orders)
+{
 
     this->setFileName(name);
 
-    try {
+    try
+    {
         fstream in;
 
         in.open(fileName, ios::in);
 
-        if (!in.is_open()) {
+        if (!in.is_open())
+        {
             throw "Error: Unable to open file.";
         }
 
@@ -465,22 +507,24 @@ void FileHandling::readOrderData(std::string name, std::vector<Order>& orders) {
             stringstream s(line);
             std::vector<Product> orderProducts;
 
-            if (line.empty()) {
+            if (line.empty())
+            {
                 continue;
             }
 
             while (getline(s, word, ','))
             {
-                row.push_back(word);   
+                row.push_back(word);
             }
 
             int size = row.size();
 
-            for (int i = 1; i < size - 1; i++) {
+            for (int i = 1; i < size - 1; i++)
+            {
                 Product product(row[i]);
                 orderProducts.push_back(product);
             }
-          
+
             Order order(row[0], orderProducts);
             order.setTotalPrice(stof(row[size - 1]));
             orders.push_back(order);
@@ -488,17 +532,20 @@ void FileHandling::readOrderData(std::string name, std::vector<Order>& orders) {
 
         in.close();
     }
-    catch(const char* message) {
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
     }
 }
 
-void FileHandling::addEventToFile(std::string name, Event* event) {
+void FileHandling::addEventToFile(std::string name, Event *event)
+{
 
     this->setFileName(name);
 
-    try {     // Exceptions
+    try
+    { // Exceptions
         fstream out;
 
         out.open(fileName, ios::app); /// append
@@ -510,7 +557,8 @@ void FileHandling::addEventToFile(std::string name, Event* event) {
 
         out << event->getEventName() << ",";
 
-        for(auto product : event->getEventProducts()) {
+        for (auto product : event->getEventProducts())
+        {
             out << product.getProductName() << ",";
         }
 
@@ -518,22 +566,26 @@ void FileHandling::addEventToFile(std::string name, Event* event) {
 
         out.close();
     }
-    catch(const char* message) {
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
     }
 }
 
-void FileHandling::readEventData(std::string name, std::vector<Event*>& events) {
+void FileHandling::readEventData(std::string name, std::vector<Event *> &events)
+{
 
     this->setFileName(name);
 
-    try {           // Exceptions
+    try
+    { // Exceptions
         fstream in;
 
         in.open(fileName, ios::in);
 
-        if (!in.is_open()) {
+        if (!in.is_open())
+        {
             throw "Error: Unable to open file.";
         }
 
@@ -542,13 +594,13 @@ void FileHandling::readEventData(std::string name, std::vector<Event*>& events) 
         std::vector<Product> eventProducts;
 
         getline(in, line);
-        
+
         while (getline(in, line))
         {
 
             row.clear();
             stringstream s(line);
-            Event* event;
+            Event *event;
 
             if (line.empty())
             {
@@ -557,41 +609,45 @@ void FileHandling::readEventData(std::string name, std::vector<Event*>& events) 
 
             while (getline(s, word, ','))
             {
-                row.push_back(word);  
+                row.push_back(word);
             }
 
             int size = row.size();
 
-            for (int i = 1; i < size - 1; i++) {
+            for (int i = 1; i < size - 1; i++)
+            {
                 Product product(row[i]);
                 eventProducts.push_back(product);
             }
-          
-            if (row[0] == "Coffee Tasting") {
-                event = new CoffeeTastingEvent(row[0], eventProducts, stof(row[size -1]));
+
+            if (row[0] == "Coffee Tasting")
+            {
+                event = new CoffeeTastingEvent(row[0], eventProducts, stof(row[size - 1]));
             }
-            else if (row[0] == "Live Music") {
+            else if (row[0] == "Live Music")
+            {
                 event = new LiveMusicEvent(row[0], eventProducts, stof(row[size - 1]));
             }
 
             events.push_back(event);
-           
         }
 
         in.close();
-
     }
-    catch(const char* message) {
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
     }
 }
 
-void FileHandling::addReportToFile(std::string name, float revenue, float cost, float income, float productsCost, float employeesCost, float eventsCost) {
+void FileHandling::addReportToFile(std::string name, float revenue, float cost, float income, float productsCost, float employeesCost, float eventsCost)
+{
 
     this->setFileName(name);
 
-    try {              // Exceptions
+    try
+    { // Exceptions
         fstream out;
 
         out.open(fileName, ios::app); /// append
@@ -603,9 +659,9 @@ void FileHandling::addReportToFile(std::string name, float revenue, float cost, 
 
         out << revenue << "," << cost << "," << income << "," << productsCost << "," << employeesCost << "," << eventsCost << endl;
         out.close();
-
     }
-    catch(const char* message) {
+    catch (const char *message)
+    {
         cout << message << endl;
         return;
     }
