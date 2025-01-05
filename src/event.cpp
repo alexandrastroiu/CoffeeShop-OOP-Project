@@ -1,5 +1,6 @@
-#include <iostream>
 #include "../headers/event.hpp"
+
+#include <iostream>
 
 using namespace std;
 
@@ -7,7 +8,7 @@ using namespace std;
 Event::Event(std::string eventName, std::vector<Product> products, float cost) {
    this->eventName = eventName;
    this->products = products;
-   totalEventCost = 0.0;
+   totalEventCost = cost;
 }
 
 std::string Event::getEventName() {
@@ -58,6 +59,8 @@ void LiveMusicEvent::showEventInfo() {
     for (auto product : products) {
         cout << product.getProductName() << " "; 
     }
+
+    cout << endl;
 }
 
 float CoffeeTastingEvent::calculateEventCost() {

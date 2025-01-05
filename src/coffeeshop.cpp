@@ -1,5 +1,6 @@
-#include <iostream>
 #include "../headers/coffeeshop.hpp"
+
+#include <iostream>
 
 using namespace std;
 
@@ -50,7 +51,7 @@ std::vector<Product> Coffeeshop::getAllProductsVector() {
 void Coffeeshop::showAllEmployees() {
     try     // Exceptions
     {
-        cout << "All employees: " << endl;
+        cout << endl << "All employees: " << endl;
         for (auto employee : allEmployees)
         {
             cout << employee->getEmployeeName() << endl;
@@ -71,16 +72,17 @@ void Coffeeshop::showAllEvents()
 {
     try  // Exceptions
     {
-        cout << "All events: " << endl;
+        if (allEvents.empty())
+        {
+            throw "No events to show.";
+        }
+
+        cout << endl << "All events: " << endl;
         for (auto event : allEvents)
         {
             cout << event->getEventName() << endl;
         }
 
-        if (allEvents.empty())
-        {
-            throw "No events to show.";
-        }
     }
     catch (const char *message)
     {
@@ -92,7 +94,7 @@ void Coffeeshop::showAllEvents()
 void Coffeeshop::showAllOrders() {
     try   // Exceptions
     {
-        cout << "All orders: " << endl;
+        cout << endl << "All orders: " << endl;
         for (auto order : allOrders)
         {
             cout << order.getClientName() << endl;
@@ -112,7 +114,7 @@ void Coffeeshop::showAllOrders() {
 void Coffeeshop::showAllProducts() {
     try   // Exceptions
     {
-        cout << "All products: " << endl;  
+        cout << endl << "All products: " << endl;  
         for (auto product : allProducts)
         {
             cout << product.getProductName() << endl;

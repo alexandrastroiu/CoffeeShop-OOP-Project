@@ -1,7 +1,8 @@
-#include <iostream>
-#include <sstream>
 #include "../headers/file.hpp"
 #include "../headers/order.hpp"
+
+#include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -566,11 +567,11 @@ void FileHandling::readEventData(std::string name, std::vector<Event*>& events) 
                 eventProducts.push_back(product);
             }
           
-            if (row[1] == "Coffee Tasting") {
-                event = new CoffeeTastingEvent(row[1], eventProducts, stof(row[size -1]));
+            if (row[0] == "Coffee Tasting") {
+                event = new CoffeeTastingEvent(row[0], eventProducts, stof(row[size -1]));
             }
-            else if (row[1] == "Live Music") {
-                event = new LiveMusicEvent(row[1], eventProducts, stof(row[size - 1]));
+            else if (row[0] == "Live Music") {
+                event = new LiveMusicEvent(row[0], eventProducts, stof(row[size - 1]));
             }
 
             events.push_back(event);

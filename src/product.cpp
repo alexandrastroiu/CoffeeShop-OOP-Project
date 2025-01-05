@@ -1,5 +1,6 @@
-#include <iostream>
 #include "../headers/product.hpp"
+
+#include <iostream>
 
 using namespace std;
 
