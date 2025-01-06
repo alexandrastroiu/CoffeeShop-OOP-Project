@@ -178,7 +178,7 @@ void Coffeeshop::addEmployee(std::string fileName, std::string name, std::string
     {
         employee = new Barista(name, role, start, end, payment);
     }
-    else if (role == "Waiter")
+    else if (role == "Waiter" || role == "Ospatar")
     {
         employee = new Waiter(name, role, start, end, payment);
     }
@@ -204,7 +204,7 @@ void Coffeeshop::deleteEmployee(std::string fileName, std::string name, std::str
     {
         employee = new Barista(name, role, start, end, payment);
     }
-    else if (role == "Waiter")
+    else if (role == "Waiter" || role == "Ospatar")
     {
         employee = new Waiter(name, role, start, end, payment);
     }
@@ -237,7 +237,7 @@ void Coffeeshop::updateEmployeeHours(std::string fileName, std::string name, std
     {
         employee = new Barista(name, role, start, end, payment);
     }
-    else if (role == "Waiter")
+    else if (role == "Waiter" || role == "Ospatar") // Import and export csv files in Romanian and English
     {
         employee = new Waiter(name, role, start, end, payment);
     }

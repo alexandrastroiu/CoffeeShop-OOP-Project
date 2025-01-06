@@ -14,13 +14,16 @@ using namespace std;
 
 int main()
 {
-    Coffeeshop coffeeshop("Bucharest", 3);
+    Coffeeshop coffeeshop("Bucharest", 3), coffeeshopCluj("Cluj", 1);
     Product orangeJuice("Orange Juice", "Drinks", 1, 10, 5); // Create a new product
     Product lemonade("Lemonade", "Drinks", 1, 15, 7);        // Create a new product
 
     coffeeshop.getAllEmployees("../../data/employees_bucharest.csv");
-    coffeeshop.showAllEmployees();
+    coffeeshopCluj.getAllEmployees("../../data/angajati_cluj.csv");                                     // Import the csv file in Romanian
+    coffeeshop.showAllEmployees();                                                                      // Show all employees in the first coffeeshop
+    coffeeshopCluj.showAllEmployees();                                                                  // Show all employees in the second coffeeshop
     coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Radu Ion", "Waiter", 9, 17, 120);     // Add a new employee
+    coffeeshopCluj.addEmployee("../../data/angajati_cluj.csv", "Oana Ion", "Ospatar", 9, 15, 100);      // Add a new employee in the csv file in Romanian
     coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Ana Dan", "Waiter", 9, 17, 120);      // Add a new employee
     coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Elena Ion", "Barista", 9, 17, 200);   // Add a new employee
     coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Diana Mihai", "Manager", 9, 16, 220); // Add a new employee
