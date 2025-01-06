@@ -197,7 +197,7 @@ void FileHandling::readEmployeeData(std::string name, std::vector<Employee *> &e
             {
                 employee = new Barista(row[0], row[1], stoi(row[2]), stoi(row[3]), stof(row[4]));
             }
-            else if (row[1] == "Waiter")
+            else if (row[1] == "Waiter" || row[1] == "Ospatar") // Import and export csv files in Romanian and English
             {
                 employee = new Waiter(row[0], row[1], stoi(row[2]), stoi(row[3]), stof(row[4]));
             }
