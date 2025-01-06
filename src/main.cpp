@@ -93,7 +93,8 @@ int main()
     cout << "Daily Events cost: " << coffeeshop.calculateEventsCost() << endl;
     cout << "Daily Cost: " << coffeeshop.calculateDailyCost() << endl;
     cout << "Daily Income: " << coffeeshop.calculateDailyIncome() << endl;
-    coffeeshop.createReport("../../data/report_bucharest.csv"); // Create the daily report
+    coffeeshop.createReport("../../data/report_bucharest.csv"); // Create the daily report in English
+    coffeeshop.createReport("../../data/raport_bucuresti.csv"); // Create the daily report in Romanian
 
     return 0;
 }
