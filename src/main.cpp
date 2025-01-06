@@ -52,7 +52,7 @@ int main()
     Order order("Ana Mihai", orderProducts); // Create a new order
     order.showOrderInfo();                   // Show order information
     cout << endl
-         << "Order Price: " << order.calculateTotalPrice("../../data/orders_bucharest.csv") << endl;
+         << "Order Price: " << order.calculateTotalPrice("../../data/orders_bucharest.csv") << endl; // Calculate the total price of the current order
     coffeeshop.getAllOrders("../../data/orders_bucharest.csv");
     coffeeshop.showAllOrders();
     coffeeshop.placeOrder("../../data/orders_bucharest.csv", order); // Place a new order
@@ -61,14 +61,14 @@ int main()
     LiveMusicEventFactory liveMusicFactory;
     Product product3("Latte"), product4("Tea"), product5("Espresso");
     vector<Product> eventProducts = {product3, product4, product5};
-    allProducts = coffeeshop.getAllProductsVector();
+    allProducts = coffeeshop.getAllProductsVector(); // Get all the products in the menu
     for (auto &eventProduct : eventProducts)
     {
         for (auto product : allProducts)
         {
             if (product.getProductName() == eventProduct.getProductName())
             {
-                eventProduct.setCost(product.getCost());
+                eventProduct.setCost(product.getCost()); // Set the event products cost
             }
         }
     }
@@ -78,9 +78,9 @@ int main()
         Event *musicEvent = liveMusicFactory.createLiveMusicEvent("Live Music", eventProducts, 0, 500, 500); // Create a new event
         cout << endl
              << "New event cost: " << musicEvent->calculateEventCost() << endl;
-        musicEvent->showEventInfo(); // Show event information
+        musicEvent->showEventInfo(); // Show current event information
         coffeeshop.getAllEvents("../../data/events_bucharest.csv");
-        coffeeshop.showAllEvents();
+        coffeeshop.showAllEvents();                                              // Show all events
         coffeeshop.organizeEvent("../../data/events_bucharest.csv", musicEvent); // Organize a new event
         coffeeshop.showAllEvents();                                              // Show all events
         if (musicEvent == nullptr)
