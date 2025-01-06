@@ -15,16 +15,23 @@ using namespace std;
 int main()
 {
     Coffeeshop coffeeshop("Bucharest", 3);
+    Product orangeJuice("Orange Juice", "Drinks", 1, 10, 5); // Create a new product
+    Product lemonade("Lemonade", "Drinks", 1, 15, 7);        // Create a new product
 
     coffeeshop.getAllEmployees("../../data/employees_bucharest.csv");
     coffeeshop.showAllEmployees();
-    coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Radu Ion", "Waiter", 9, 17, 120);    // Add a new employee
-    coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Ana Dan", "Waiter", 9, 17, 120);     // Add a new employee
-    coffeeshop.deleteEmployee("../../data/employees_bucharest.csv", "Radu Ion", "Waiter", 9, 17, 120); // Delete an employee
+    coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Radu Ion", "Waiter", 9, 17, 120);     // Add a new employee
+    coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Ana Dan", "Waiter", 9, 17, 120);      // Add a new employee
+    coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Elena Ion", "Barista", 9, 17, 200);   // Add a new employee
+    coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Diana Mihai", "Manager", 9, 16, 220); // Add a new employee
+    coffeeshop.deleteEmployee("../../data/employees_bucharest.csv", "Radu Ion", "Waiter", 9, 17, 120);  // Delete an employee
     coffeeshop.showAllEmployees();
     coffeeshop.updateEmployeeHours("../../data/employees_bucharest.csv", "Ana Dan", "Waiter", 9, 17, 120, 9, 15); // Update employee hours
     coffeeshop.getAllProducts("../../data/products_bucharest.csv");
     coffeeshop.addProduct("../../data/products_bucharest.csv", "Orange Juice", "Drinks", 1, 10, 5); // Add a new product
+    orangeJuice.showProductInfo();                                                                  // Show product information
+    coffeeshop.addProduct("../../data/products_bucharest.csv", "Lemonade", "Drinks", 1, 15, 7);     // Add a new product
+    lemonade.showProductInfo();                                                                     // Show product information
     coffeeshop.showAllProducts();
     coffeeshop.deleteProduct("../../data/products_bucharest.csv", "Orange Juice", "Drinks", 1, 10, 5); // Delete a product
     coffeeshop.showAllProducts();
@@ -71,7 +78,7 @@ int main()
         Event *musicEvent = liveMusicFactory.createLiveMusicEvent("Live Music", eventProducts, 0, 500, 500); // Create a new event
         cout << endl
              << "New event cost: " << musicEvent->calculateEventCost() << endl;
-        musicEvent->showEventInfo();
+        musicEvent->showEventInfo(); // Show event information
         coffeeshop.getAllEvents("../../data/events_bucharest.csv");
         coffeeshop.showAllEvents();
         coffeeshop.organizeEvent("../../data/events_bucharest.csv", musicEvent); // Organize a new event
