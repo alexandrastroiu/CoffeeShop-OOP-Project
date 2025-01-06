@@ -15,15 +15,18 @@ using namespace std;
 int main()
 {
     Coffeeshop coffeeshop("Bucharest", 3), coffeeshopCluj("Cluj", 1);
+    coffeeshop.showCoffeeshopInfo();
+    coffeeshopCluj.showCoffeeshopInfo();
     Product orangeJuice("Orange Juice", "Drinks", 1, 10, 5); // Create a new product
     Product lemonade("Lemonade", "Drinks", 1, 15, 7);        // Create a new product
 
     coffeeshop.getAllEmployees("../../data/employees_bucharest.csv");
-    coffeeshopCluj.getAllEmployees("../../data/angajati_cluj.csv");                                     // Import the csv file in Romanian
-    coffeeshop.showAllEmployees();                                                                      // Show all employees in the first coffeeshop
-    coffeeshopCluj.showAllEmployees();                                                                  // Show all employees in the second coffeeshop
-    coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Radu Ion", "Waiter", 9, 17, 120);     // Add a new employee
-    coffeeshopCluj.addEmployee("../../data/angajati_cluj.csv", "Oana Ion", "Ospatar", 9, 15, 100);      // Add a new employee in the csv file in Romanian
+    coffeeshopCluj.getAllEmployees("../../data/angajati_cluj.csv");                                 // Import the csv file in Romanian
+    coffeeshop.showAllEmployees();                                                                  // Show all employees in the first coffeeshop
+    coffeeshopCluj.showAllEmployees();                                                              // Show all employees in the second coffeeshop
+    coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Radu Ion", "Waiter", 9, 17, 120); // Add a new employee
+    coffeeshopCluj.addEmployee("../../data/angajati_cluj.csv", "Oana Ion", "Ospatar", 9, 15, 100);  // Add a new employee in the csv file in Romanian
+    coffeeshopCluj.showAllEmployees();
     coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Ana Dan", "Waiter", 9, 17, 120);      // Add a new employee
     coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Elena Ion", "Barista", 9, 17, 200);   // Add a new employee
     coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Diana Mihai", "Manager", 9, 16, 220); // Add a new employee
@@ -31,12 +34,15 @@ int main()
     coffeeshop.showAllEmployees();
     coffeeshop.updateEmployeeHours("../../data/employees_bucharest.csv", "Ana Dan", "Waiter", 9, 17, 120, 9, 15); // Update employee hours
     coffeeshop.getAllProducts("../../data/products_bucharest.csv");
-    coffeeshop.addProduct("../../data/products_bucharest.csv", "Orange Juice", "Drinks", 1, 10, 5); // Add a new product
-    orangeJuice.showProductInfo();                                                                  // Show product information
-    coffeeshop.addProduct("../../data/products_bucharest.csv", "Lemonade", "Drinks", 1, 15, 7);     // Add a new product
-    lemonade.showProductInfo();                                                                     // Show product information
-    coffeeshop.showAllProducts();
-    coffeeshop.deleteProduct("../../data/products_bucharest.csv", "Orange Juice", "Drinks", 1, 10, 5); // Delete a product
+    coffeeshopCluj.getAllProducts("../../data/produse_cluj.csv");                                       // Import the csv file in Romanian
+    coffeeshop.addProduct("../../data/products_bucharest.csv", "Orange Juice", "Drinks", 1, 10, 5);     // Add a new product
+    coffeeshopCluj.addProduct("../../data/produse_cluj.csv", "Suc de portocale", "Bauturi", 1, 10, 15); // Add a new product in the csv file in Romanian
+    orangeJuice.showProductInfo();                                                                      // Show product information
+    coffeeshop.addProduct("../../data/products_bucharest.csv", "Lemonade", "Drinks", 1, 15, 7);         // Add a new product
+    lemonade.showProductInfo();                                                                         // Show product information
+    coffeeshop.showAllProducts();                                                                       // Show all products in the first coffeeshop
+    coffeeshopCluj.showAllProducts();                                                                   // Show all product in the second coffeeshop
+    coffeeshop.deleteProduct("../../data/products_bucharest.csv", "Orange Juice", "Drinks", 1, 10, 5);  // Delete a product
     coffeeshop.showAllProducts();
 
     Product product1("Tea"), product2("Latte");

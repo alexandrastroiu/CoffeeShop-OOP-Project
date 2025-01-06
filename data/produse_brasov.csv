@@ -1,0 +1,17 @@
+Nume,Tip,Cantitate,Pret,Cost
+Apa,Bauturi,200,10,4
+Espresso,Bauturi,10,15,6
+Americano,Bauturi,10,15,6
+Cappuccino,Bauturi,10,17,8
+Latte,Bauturi,5,17,8
+Macchiato,Bauturi,5,17,8
+Irish Coffee,Bauturi,2,28,13
+Ceai,Bauturi,5,15,6
+Ciocolata Calda,Bauturi,5,15,6
+Sandwich cu pui,Mancare,5,21,13
+Sandwich cu sunca,Mancare,4,21,13
+Italian Sandwich,Mancare,4,28,15
+Club Sandwich,Mancare,3,28,15
+American Pancakes,Desert,2,30,16
+Inghetata,Desert,4,15,10
+Croissant cu ciocolata,Desert,2,15,8
