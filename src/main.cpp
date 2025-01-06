@@ -123,6 +123,7 @@ int main()
         cout << message << endl;
     }
 
+    cout << "First Coffeeshop: ";
     cout << endl
          << "Daily Revenue: " << coffeeshop.calculateDailyRevenue() << endl;
     cout << "Daily Products cost: " << coffeeshop.calculateProductsCost() << endl;
@@ -130,6 +131,16 @@ int main()
     cout << "Daily Events cost: " << coffeeshop.calculateEventsCost() << endl;
     cout << "Daily Cost: " << coffeeshop.calculateDailyCost() << endl;
     cout << "Daily Income: " << coffeeshop.calculateDailyIncome() << endl;
+
+    cout << "Second Coffeeshop: ";
+    cout << endl
+         << "Daily Revenue: " << coffeeshopCluj.calculateDailyRevenue() << endl;
+    cout << "Daily Products cost: " << coffeeshopCluj.calculateProductsCost() << endl;
+    cout << "Daily Employees cost: " << coffeeshopCluj.calculateEmployeesCost() << endl;
+    cout << "Daily Events cost: " << coffeeshopCluj.calculateEventsCost() << endl;
+    cout << "Daily Cost: " << coffeeshopCluj.calculateDailyCost() << endl;
+    cout << "Daily Income: " << coffeeshopCluj.calculateDailyIncome() << endl;
+
     coffeeshop.createReport("../../data/report_bucharest.csv"); // Create the daily report in English for the first coffeeshop
     coffeeshop.createReport("../../data/raport_bucuresti.csv"); // Create the daily report in Romanian for the first coffeeshop
     coffeeshopCluj.createReport("../../data/raport_cluj.csv");  // Create the daily report in Romanian for the second coffeeshop
