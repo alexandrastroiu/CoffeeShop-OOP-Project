@@ -620,11 +620,11 @@ void FileHandling::readEventData(std::string name, std::vector<Event *> &events)
                 eventProducts.push_back(product);
             }
 
-            if (row[0] == "Coffee Tasting")
+            if (row[0] == "Coffee Tasting" || row[0] == "Degustare de cafea") // Import the csv file for events in Romanian and English
             {
                 event = new CoffeeTastingEvent(row[0], eventProducts, stof(row[size - 1]));
             }
-            else if (row[0] == "Live Music")
+            else if (row[0] == "Live Music" || row[0] == "Muzica Live")
             {
                 event = new LiveMusicEvent(row[0], eventProducts, stof(row[size - 1]));
             }
