@@ -78,7 +78,8 @@ float Product::getCost()
 // Method
 void Product::showProductInfo()
 {
-    cout << "Product Info: " << endl;
+    cout << endl
+         << "Product Info: " << endl;
     cout << "Product Name: " << productName << " Product Type: " << productType << endl;
     cout << " Price: " << price << " Quantity: " << quantity << " Cost: " << cost << endl;
 }
