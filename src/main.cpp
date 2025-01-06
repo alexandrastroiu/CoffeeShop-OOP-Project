@@ -21,7 +21,7 @@ int main()
     Product lemonade("Lemonade", "Drinks", 1, 15, 7);        // Create a new product
 
     coffeeshop.getAllEmployees("../../data/employees_bucharest.csv");
-    coffeeshopCluj.getAllEmployees("../../data/angajati_cluj.csv");                                 // Import the csv file in Romanian
+    coffeeshopCluj.getAllEmployees("../../data/angajati_cluj.csv");                                 // Import the csv file  for employees in Romanian
     coffeeshop.showAllEmployees();                                                                  // Show all employees in the first coffeeshop
     coffeeshopCluj.showAllEmployees();                                                              // Show all employees in the second coffeeshop
     coffeeshop.addEmployee("../../data/employees_bucharest.csv", "Radu Ion", "Waiter", 9, 17, 120); // Add a new employee
@@ -34,7 +34,7 @@ int main()
     coffeeshop.showAllEmployees();
     coffeeshop.updateEmployeeHours("../../data/employees_bucharest.csv", "Ana Dan", "Waiter", 9, 17, 120, 9, 15); // Update employee hours
     coffeeshop.getAllProducts("../../data/products_bucharest.csv");
-    coffeeshopCluj.getAllProducts("../../data/produse_cluj.csv");                                       // Import the csv file in Romanian
+    coffeeshopCluj.getAllProducts("../../data/produse_cluj.csv");                                       // Import the csv file for products in Romanian
     coffeeshop.addProduct("../../data/products_bucharest.csv", "Orange Juice", "Drinks", 1, 10, 5);     // Add a new product
     coffeeshopCluj.addProduct("../../data/produse_cluj.csv", "Suc de portocale", "Bauturi", 1, 10, 15); // Add a new product in the csv file in Romanian
     orangeJuice.showProductInfo();                                                                      // Show product information
@@ -46,10 +46,24 @@ int main()
     coffeeshop.showAllProducts();
 
     Product product1("Tea"), product2("Latte");
+    Product product6("Apa"), product7("Ceai");
     vector<Product> orderProducts = {product1, product2}, allProducts = coffeeshop.getAllProductsVector();
+    vector<Product> orderProductsCluj = {product6, product7}, allProductsCluj = coffeeshopCluj.getAllProductsVector();
+
     for (auto &orderProduct : orderProducts)
     {
         for (auto product : allProducts)
+        {
+            if (product.getProductName() == orderProduct.getProductName())
+            {
+                orderProduct.setPrice(product.getPrice()); // Set the price for the products in the current order
+            }
+        }
+    }
+
+    for (auto &orderProduct : orderProductsCluj)
+    {
+        for (auto product : allProductsCluj)
         {
             if (product.getProductName() == orderProduct.getProductName())
             {
@@ -58,14 +72,21 @@ int main()
         }
     }
 
-    Order order("Ana Mihai", orderProducts); // Create a new order
-    order.showOrderInfo();                   // Show order information
+    Order order("Ana Mihai", orderProducts), orderCluj("Mihaela Ion", orderProductsCluj); // Create a new order
+    order.showOrderInfo();                                                                // Show order information for the first order
+    orderCluj.showOrderInfo();                                                            // Show order information for the second order
     cout << endl
          << "Order Price: " << order.calculateTotalPrice("../../data/orders_bucharest.csv") << endl; // Calculate the total price of the current order
+    cout << endl
+         << "Order Price: " << orderCluj.calculateTotalPrice("../../data/comenzi_cluj.csv") << endl;
     coffeeshop.getAllOrders("../../data/orders_bucharest.csv");
+    coffeeshopCluj.getAllOrders("../../data/comenzi_cluj.csv"); // Import the csv file for orders in Romanian
     coffeeshop.showAllOrders();
-    coffeeshop.placeOrder("../../data/orders_bucharest.csv", order); // Place a new order
-    coffeeshop.showAllOrders();                                      // Show all orders
+    coffeeshopCluj.showAllOrders();
+    coffeeshop.placeOrder("../../data/orders_bucharest.csv", order);     // Place a new order for the first coffeeshop
+    coffeeshopCluj.placeOrder("../../data/comenzi_cluj.csv", orderCluj); // Place a new order for the second coffeeshop
+    coffeeshop.showAllOrders();                                          // Show all orders  for the first coffeeshop
+    coffeeshopCluj.showAllOrders();                                      // Show all orders  for the second coffeeshop
 
     LiveMusicEventFactory liveMusicFactory;
     Product product3("Latte"), product4("Tea"), product5("Espresso");
@@ -77,7 +98,7 @@ int main()
         {
             if (product.getProductName() == eventProduct.getProductName())
             {
-                eventProduct.setCost(product.getCost()); // Set the event products cost
+                eventProduct.setCost(product.getCost()); // Set the event products cost according to the products in the menu
             }
         }
     }
@@ -86,8 +107,8 @@ int main()
     {
         Event *musicEvent = liveMusicFactory.createLiveMusicEvent("Live Music", eventProducts, 0, 500, 500); // Create a new event
         cout << endl
-             << "New event cost: " << musicEvent->calculateEventCost() << endl;
-        musicEvent->showEventInfo(); // Show current event information
+             << "New event cost: " << musicEvent->calculateEventCost() << endl; // Calculate the cost for the current event
+        musicEvent->showEventInfo();                                            // Show current event information
         coffeeshop.getAllEvents("../../data/events_bucharest.csv");
         coffeeshop.showAllEvents();                                              // Show all events
         coffeeshop.organizeEvent("../../data/events_bucharest.csv", musicEvent); // Organize a new event
@@ -109,8 +130,9 @@ int main()
     cout << "Daily Events cost: " << coffeeshop.calculateEventsCost() << endl;
     cout << "Daily Cost: " << coffeeshop.calculateDailyCost() << endl;
     cout << "Daily Income: " << coffeeshop.calculateDailyIncome() << endl;
-    coffeeshop.createReport("../../data/report_bucharest.csv"); // Create the daily report in English
-    coffeeshop.createReport("../../data/raport_bucuresti.csv"); // Create the daily report in Romanian
+    coffeeshop.createReport("../../data/report_bucharest.csv"); // Create the daily report in English for the first coffeeshop
+    coffeeshop.createReport("../../data/raport_bucuresti.csv"); // Create the daily report in Romanian for the first coffeeshop
+    coffeeshopCluj.createReport("../../data/raport_cluj.csv");  // Create the daily report in Romanian for the second coffeeshop
 
     return 0;
 }

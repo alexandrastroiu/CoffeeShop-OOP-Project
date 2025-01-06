@@ -53,6 +53,8 @@ void Order::showOrderInfo()
     {
         cout << product.getProductName() << " ";
     }
+
+    cout << endl;
 }
 
 float Order::calculateTotalPrice(std::string name)
