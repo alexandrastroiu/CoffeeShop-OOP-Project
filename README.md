@@ -35,10 +35,13 @@ The program can import and export CSV files in Romanian or English.
 ## Prerequisites
 
 * C++ compiler
+* CMake (optional)
 
 ## Installation
 
 1. Clone the repository 
+' git clone https://github.com/your_username/CoffeeShop-OOP-Project.git'
 2. Navigate to the project directory
-3. Compile the project
+'cd CoffeeShop-OOP-Project'
+3. Compile the project (manually or using CMake)
 4. Run the executable
