@@ -11,10 +11,22 @@ The project aims to develop a management system for a network of coffeeshops. Th
 
 ## Features
 
+#### Details
+
+#### Files
+
 ## Technologies Used
+
 * Programming Language: C++
 * Data Storage: CSV files
 
 ## Prerequisites
 
+* C++ compiler
+
 ## Installation
+
+1. Clone the repository 
+2. Navigate to the project directory
+3. Compile the project
+4. Run the executable
