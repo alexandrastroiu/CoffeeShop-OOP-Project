@@ -13,7 +13,19 @@ The project aims to develop a management system for a network of coffeeshops. Th
 
 #### Details
 
+The program is used to manage a network of coffeeshops. The coffeeshops are located in five different cities across Romania.
+
 #### Files
+
+The system will store and manage data through CSV files. The CSV files can be found in the **data** folder.
+The following CSV files are used:
+* **employees.csv** - Contains the name, role, start and end of the work shift, payment for each employee.
+* **products.csv** - Lists the name, type, quantity, price and cost for each product.
+* **orders.csv** - Records the client name, the list of products ordered and the total price for each order.
+* **events.csv** - Details the event name, the list of products and the total cost of the event
+* **report.csv** -  Records the revenue, costs and income.
+
+The program can import and export CSV files in Romanian or English.
 
 ## Technologies Used
 
