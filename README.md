@@ -42,7 +42,7 @@ The program can import and export CSV files in Romanian or English.
 ## Installation
 
 1. Clone the repository 
-`git clone https://github.com/your_username/CoffeeShop-OOP-Project.git`
+`git clone https://github.com/alexandrastroiu/CoffeeShop-OOP-Project.git`
 2. Navigate to the project directory
 `cd CoffeeShop-OOP-Project`
 3. Compile the project (manually or using CMake)
