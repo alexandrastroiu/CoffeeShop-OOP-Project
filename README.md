@@ -9,7 +9,8 @@ The project aims to develop a management system for a network of coffeeshops. Th
 * Planning special events
 * Calculating the daily revenue, daily costs and daily income
 
-## Video Demo: https://youtu.be/eylSyXJY-Pw
+## Video Demo: 
+https://youtu.be/eylSyXJY-Pw
 
 ## Features
 
@@ -42,8 +43,12 @@ The program can import and export CSV files in Romanian or English.
 ## Installation
 
 1. Clone the repository 
-`git clone https://github.com/alexandrastroiu/CoffeeShop-OOP-Project.git`
+```
+git clone https://github.com/alexandrastroiu/CoffeeShop-OOP-Project.git
+```
 2. Navigate to the project directory
-`cd CoffeeShop-OOP-Project`
+```
+cd CoffeeShop-OOP-Project
+```
 3. Compile the project (manually or using CMake)
 4. Run the executable
